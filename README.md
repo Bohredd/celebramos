@@ -35,3 +35,42 @@
    git clone https://github.com/seuusuario/celebramos.git
    cd celebramos
    ```
+
+Configure o ambiente virtual:
+
+bash
+Copiar código
+python -m venv venv
+source venv/bin/activate  # Linux/Mac
+venv\Scripts\activate  # Windows
+Instale as dependências:
+
+bash
+Copiar código
+pip install -r requirements.txt
+Configure o banco de dados no arquivo de configurações.
+
+Execute as migrações:
+
+bash
+Copiar código
+python manage.py migrate
+Inicie o servidor:
+
+bash
+Copiar código
+python manage.py runserver
+Acesse a aplicação em seu navegador: http://127.0.0.1:8000
+
+Contribuições
+Contribuições são bem-vindas! Sinta-se à vontade para abrir issues e pull requests.
+
+Licença
+Este projeto é licenciado sob a MIT License. Veja o arquivo LICENSE para mais detalhes.
+
+yaml
+Copiar código
+
+---
+
+Você pode ajustar o conteúdo conforme necessário para se adequar ao seu projeto!
