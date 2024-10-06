@@ -36,41 +36,34 @@
    cd celebramos
    ```
 
-Configure o ambiente virtual:
+2. Configure o ambiente virtual:
 
-bash
-Copiar código
-python -m venv venv
-source venv/bin/activate  # Linux/Mac
-venv\Scripts\activate  # Windows
-Instale as dependências:
+   ```bash
+   python -m venv venv
+   source venv/bin/activate  # Linux/Mac
+   venv\Scripts\activate  # Windows
+   ```
+   
+3. Instale as dependências:
 
-bash
-Copiar código
-pip install -r requirements.txt
-Configure o banco de dados no arquivo de configurações.
+   ```bash
+   pip install -r requirements.txt
+    ```
+   
+4. Configure o banco de dados no arquivo de configurações.
 
-Execute as migrações:
+5. Execute as migrações:
 
-bash
-Copiar código
-python manage.py migrate
-Inicie o servidor:
+   ```bash
+   python manage.py migrate
+   ```
+6. Inicie o servidor:
 
-bash
-Copiar código
-python manage.py runserver
-Acesse a aplicação em seu navegador: http://127.0.0.1:8000
+   ```bash
+   python manage.py runserver
+   ```
 
-Contribuições
-Contribuições são bem-vindas! Sinta-se à vontade para abrir issues e pull requests.
-
-Licença
-Este projeto é licenciado sob a MIT License. Veja o arquivo LICENSE para mais detalhes.
-
-yaml
-Copiar código
-
----
-
-Você pode ajustar o conteúdo conforme necessário para se adequar ao seu projeto!
+7. Acesse a aplicação em seu navegador: 
+   ```bash
+   http://127.0.0.1:8000
+   ```
