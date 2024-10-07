@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Criar Site</title>
+</head>
+<body>
+    <h1>Criar Novo Site ou Loja</h1>
+
+    <form method="POST">
+        {% csrf_token %}
+        <div>
+            <label for="{{ form.basico.id_for_label }}">{{ form.basico.label_tag }}</label>
+            {{ form.basico }}
+            <small>{{ form.basico.help_text }}</small>
+        </div>
+        <div>
+            <label for="{{ form.profissional.id_for_label }}">{{ form.profissional.label_tag }}</label>
+            {{ form.profissional }}
+            <small>{{ form.profissional.help_text }}</small>
+        </div>
+        <div>
+            <label for="{{ form.nome.id_for_label }}">{{ form.nome.label_tag }}</label>
+            {{ form.nome }}
+        </div>
+
+        <button type="submit">Criar</button>
+    </form>
+</body>
+</html>
