@@ -1,0 +1,86 @@
+/* Tema claro - theme.css */
+
+/* Ajuste de cores para fundo e texto */
+body {
+    background-color: #ffffff; /* Cor de fundo clara */
+    color: #333333;            /* Cor de texto escura */
+    font-family: Arial, sans-serif;
+}
+
+/* Links */
+a {
+    color: #007bff; /* Azul padrão para links */
+}
+
+a:hover {
+    color: #0056b3; /* Cor dos links ao passar o mouse */
+}
+
+/* Cabeçalhos */
+h1, h2, h3, h4, h5, h6 {
+    color: #000000; /* Cor do texto dos cabeçalhos */
+}
+
+/* Botões */
+button {
+    background-color: #007bff; /* Cor de fundo azul dos botões */
+    color: #ffffff;            /* Cor do texto nos botões */
+    border: none;              /* Sem borda */
+    padding: 10px 20px;
+    cursor: pointer;
+}
+
+button:hover {
+    background-color: #0056b3; /* Fundo mais escuro ao passar o mouse */
+}
+
+/* Inputs e textareas */
+input, textarea {
+    background-color: #f8f9fa; /* Fundo dos inputs */
+    color: #495057;            /* Texto dos inputs */
+    border: 1px solid #ced4da; /* Borda cinza clara */
+    padding: 10px;
+}
+
+input:focus, textarea:focus {
+    border-color: #80bdff;     /* Borda azul clara ao focar no input */
+    outline: none;
+}
+
+/* Tabelas */
+table {
+    width: 100%;
+    border-collapse: collapse;
+}
+
+th, td {
+    padding: 10px;
+    border: 1px solid #dee2e6;
+    text-align: left;
+}
+
+th {
+    background-color: #f1f3f5; /* Fundo do cabeçalho da tabela */
+    color: #212529;            /* Cor do texto no cabeçalho */
+}
+
+tr:nth-child(even) {
+    background-color: #f8f9fa; /* Fundo alternado das linhas */
+}
+
+/* Alertas */
+.alert {
+    padding: 15px;
+    background-color: #f8f9fa;
+    color: #333333;
+    border-radius: 5px;
+    margin-bottom: 20px;
+}
+
+.alert-success {
+    background-color: #d4edda; /* Cor verde para alertas de sucesso */
+}
+
+.alert-error {
+    background-color: #f8d7da; /* Cor vermelha para alertas de erro */
+}
