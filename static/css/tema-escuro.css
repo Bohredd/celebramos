@@ -1,49 +1,80 @@
-/* Tema escuro - dark-theme.css */
+/* Tema claro - theme.css */
+
+.cor-secundaria {
+    /* ouro brilhante */
+    background-color: #FFD700;
+}
+
+.cor-primaria {
+    /*  prata claro  */
+    background-color: #C0C0C0;
+}
+
+.navbar-theme {
+    background-color: #C0C0C0; /* Cor de fundo azul da barra de navegação */
+    color: #ffffff; /* Cor do texto na barra de navegação */
+    border-bottom: 2px solid #FFD700; /* Borda branca na parte inferior */
+}
+
+.footer-theme {
+    background-color: #C0C0C0; /* Cor de fundo azul da barra de navegação */
+    color: #ffffff; /* Cor do texto na barra de navegação */
+    border-top: 2px solid #FFD700; /* Borda branca na parte inferior */
+}
+
+.title-theme {
+    color: #FFD700; /* Cor do texto dos títulos */
+}
+
+.btn-theme {
+    color: #000;
+}
 
 /* Ajuste de cores para fundo e texto */
 body {
-    background-color: #121212; /* Cor de fundo escura */
-    color: #e0e0e0;           /* Cor de texto clara */
-    font-family: Arial, sans-serif;
+    background-color: #ffffff; /* Cor de fundo clara */
+    color: #ffffcc; /* Cor de texto escura */
+    font-family: 'Noto Serif', serif; /* Apply the font to the body */
 }
 
 /* Links */
 a {
-    color: #bb86fc; /* Roxo suave para links */
+    color: #007bff; /* Azul padrão para links */
 }
 
 a:hover {
-    color: #ff79c6; /* Cor dos links ao passar o mouse */
+    color: #0056b3; /* Cor dos links ao passar o mouse */
 }
 
 /* Cabeçalhos */
 h1, h2, h3, h4, h5, h6 {
-    color: #ffffff; /* Cor do texto dos cabeçalhos */
+    color: #FFEB3B; /* Cor do texto dos cabeçalhos */
 }
 
 /* Botões */
 button {
-    background-color: #333333; /* Cor de fundo dos botões */
-    color: #ffffff;            /* Cor do texto nos botões */
-    border: 1px solid #555555; /* Borda cinza escura */
+    background-color: #007bff; /* Cor de fundo azul dos botões */
+    color: #ffffff; /* Cor do texto nos botões */
+    border: none; /* Sem borda */
     padding: 10px 20px;
     cursor: pointer;
 }
 
 button:hover {
-    background-color: #444444; /* Fundo mais claro ao passar o mouse */
+    background-color: #0056b3; /* Fundo mais escuro ao passar o mouse */
 }
 
 /* Inputs e textareas */
 input, textarea {
-    background-color: #1d1d1d; /* Fundo dos inputs */
-    color: #e0e0e0;            /* Texto dos inputs */
-    border: 1px solid #333333; /* Borda cinza escura */
+    background-color: #f8f9fa; /* Fundo dos inputs */
+    color: #495057; /* Texto dos inputs */
+    border: 1px solid #ced4da; /* Borda cinza clara */
     padding: 10px;
 }
 
 input:focus, textarea:focus {
-    border-color: #bb86fc;     /* Borda ao focar no input */
+    border-color: #80bdff; /* Borda azul clara ao focar no input */
+    outline: none;
 }
 
 /* Tabelas */
@@ -54,32 +85,32 @@ table {
 
 th, td {
     padding: 10px;
-    border: 1px solid #333333;
+    border: 1px solid #dee2e6;
     text-align: left;
 }
 
 th {
-    background-color: #1f1f1f; /* Fundo do cabeçalho da tabela */
-    color: #ffffff;            /* Cor do texto no cabeçalho */
+    background-color: #f1f3f5; /* Fundo do cabeçalho da tabela */
+    color: #212529; /* Cor do texto no cabeçalho */
 }
 
 tr:nth-child(even) {
-    background-color: #2c2c2c; /* Fundo alternado das linhas */
+    background-color: #f8f9fa; /* Fundo alternado das linhas */
 }
 
 /* Alertas */
 .alert {
     padding: 15px;
-    background-color: #333333;
-    color: #ffffff;
+    background-color: #f8f9fa;
+    color: #333333;
     border-radius: 5px;
     margin-bottom: 20px;
 }
 
 .alert-success {
-    background-color: #1b5e20; /* Cor verde para alertas de sucesso */
+    background-color: #d4edda; /* Cor verde para alertas de sucesso */
 }
 
 .alert-error {
-    background-color: #d32f2f; /* Cor vermelha para alertas de erro */
+    background-color: #f8d7da; /* Cor vermelha para alertas de erro */
 }

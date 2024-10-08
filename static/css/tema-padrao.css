@@ -1,10 +1,40 @@
 /* Tema claro - theme.css */
 
+.cor-secundaria {
+    /* ouro brilhante */
+    background-color: #FFD700;
+}
+
+.cor-primaria {
+    /*  prata claro  */
+    background-color: #C0C0C0;
+}
+
+.navbar-theme {
+    background-color: #C0C0C0; /* Cor de fundo azul da barra de navegação */
+    color: #ffffff; /* Cor do texto na barra de navegação */
+    border-bottom: 2px solid #FFD700; /* Borda branca na parte inferior */
+}
+
+.footer-theme {
+    background-color: #C0C0C0; /* Cor de fundo azul da barra de navegação */
+    color: #ffffff; /* Cor do texto na barra de navegação */
+    border-top: 2px solid #FFD700; /* Borda branca na parte inferior */
+}
+
+.title-theme {
+    color: #FFD700; /* Cor do texto dos títulos */
+}
+
+.btn-theme {
+    color: #000;
+}
+
 /* Ajuste de cores para fundo e texto */
 body {
     background-color: #ffffff; /* Cor de fundo clara */
-    color: #333333;            /* Cor de texto escura */
-    font-family: Arial, sans-serif;
+    color: #ffffcc; /* Cor de texto escura */
+    font-family: 'Noto Serif', serif; /* Apply the font to the body */
 }
 
 /* Links */
@@ -18,14 +48,14 @@ a:hover {
 
 /* Cabeçalhos */
 h1, h2, h3, h4, h5, h6 {
-    color: #000000; /* Cor do texto dos cabeçalhos */
+    color: #FFEB3B; /* Cor do texto dos cabeçalhos */
 }
 
 /* Botões */
 button {
     background-color: #007bff; /* Cor de fundo azul dos botões */
-    color: #ffffff;            /* Cor do texto nos botões */
-    border: none;              /* Sem borda */
+    color: #ffffff; /* Cor do texto nos botões */
+    border: none; /* Sem borda */
     padding: 10px 20px;
     cursor: pointer;
 }
@@ -37,13 +67,13 @@ button:hover {
 /* Inputs e textareas */
 input, textarea {
     background-color: #f8f9fa; /* Fundo dos inputs */
-    color: #495057;            /* Texto dos inputs */
+    color: #495057; /* Texto dos inputs */
     border: 1px solid #ced4da; /* Borda cinza clara */
     padding: 10px;
 }
 
 input:focus, textarea:focus {
-    border-color: #80bdff;     /* Borda azul clara ao focar no input */
+    border-color: #80bdff; /* Borda azul clara ao focar no input */
     outline: none;
 }
 
@@ -61,7 +91,7 @@ th, td {
 
 th {
     background-color: #f1f3f5; /* Fundo do cabeçalho da tabela */
-    color: #212529;            /* Cor do texto no cabeçalho */
+    color: #212529; /* Cor do texto no cabeçalho */
 }
 
 tr:nth-child(even) {
