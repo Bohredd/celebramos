@@ -20,3 +20,6 @@ def criar_site(request):
         form = SiteForm()
 
     return render(request, 'wishlist/criar_site.html', {'form': form})
+
+def base(request):
+    return render(request, 'wishlist/base.html')
