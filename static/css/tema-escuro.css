@@ -1,74 +1,74 @@
-/* Tema claro - theme.css */
+/* Tema escuro - theme-dark.css */
 
 .cor-secundaria {
-    /* ouro brilhante */
-    background-color: #FFD700;
+    /* Ouro escuro */
+    background-color: #9B870C;
 }
 
 .cor-primaria {
-    /*  prata claro  */
-    background-color: #C0C0C0;
+    /* Cinza escuro */
+    background-color: #505050;
 }
 
 .navbar-theme {
-    background-color: #C0C0C0; /* Cor de fundo azul da barra de navegação */
+    background-color: #333333; /* Cor de fundo escura da barra de navegação */
     color: #ffffff; /* Cor do texto na barra de navegação */
-    border-bottom: 2px solid #FFD700; /* Borda branca na parte inferior */
+    border-bottom: 2px solid #444444; /* Borda escura na parte inferior */
 }
 
 .footer-theme {
-    background-color: #C0C0C0; /* Cor de fundo azul da barra de navegação */
-    color: #ffffff; /* Cor do texto na barra de navegação */
-    border-top: 2px solid #FFD700; /* Borda branca na parte inferior */
+    background-color: #505050; /* Cor de fundo escura */
+    color: #ffffff; /* Cor do texto no rodapé */
+    border-top: 2px solid #444444; /* Borda escura na parte superior */
 }
 
 .title-theme {
-    color: #FFD700; /* Cor do texto dos títulos */
+    color: #e0e0e0; /* Cor clara para os títulos */
 }
 
 .btn-theme {
-    color: #000;
+    color: #ffffff; /* Texto claro nos botões */
 }
 
 /* Ajuste de cores para fundo e texto */
 body {
-    background-color: #ffffff; /* Cor de fundo clara */
-    color: #ffffcc; /* Cor de texto escura */
-    font-family: 'Noto Serif', serif; /* Apply the font to the body */
+    background-color: #121212; /* Cor de fundo escura */
+    color: #f5f5f5; /* Cor de texto clara */
+    font-family: 'Noto Serif', serif;
 }
 
 /* Links */
 a {
-    color: #007bff; /* Azul padrão para links */
+    color: #1e90ff; /* Azul claro para links */
 }
 
 a:hover {
-    color: #0056b3; /* Cor dos links ao passar o mouse */
+    color: #00bfff; /* Cor mais clara ao passar o mouse */
 }
 
 /* Cabeçalhos */
 h1, h2, h3, h4, h5, h6 {
-    color: #FFEB3B; /* Cor do texto dos cabeçalhos */
+    color: #FFD700; /* Cor ouro para cabeçalhos */
 }
 
 /* Botões */
 button {
-    background-color: #007bff; /* Cor de fundo azul dos botões */
+    background-color: #333333; /* Cor de fundo escura dos botões */
     color: #ffffff; /* Cor do texto nos botões */
-    border: none; /* Sem borda */
+    border: none;
     padding: 10px 20px;
     cursor: pointer;
 }
 
 button:hover {
-    background-color: #0056b3; /* Fundo mais escuro ao passar o mouse */
+    background-color: #555555; /* Fundo mais claro ao passar o mouse */
 }
 
 /* Inputs e textareas */
 input, textarea {
-    background-color: #f8f9fa; /* Fundo dos inputs */
-    color: #495057; /* Texto dos inputs */
-    border: 1px solid #ced4da; /* Borda cinza clara */
+    background-color: #2b2b2b; /* Fundo escuro dos inputs */
+    color: #f5f5f5; /* Texto claro nos inputs */
+    border: 1px solid #444444; /* Borda cinza escura */
     padding: 10px;
 }
 
@@ -85,32 +85,32 @@ table {
 
 th, td {
     padding: 10px;
-    border: 1px solid #dee2e6;
+    border: 1px solid #444444; /* Borda escura */
     text-align: left;
 }
 
 th {
-    background-color: #f1f3f5; /* Fundo do cabeçalho da tabela */
-    color: #212529; /* Cor do texto no cabeçalho */
+    background-color: #333333; /* Fundo escuro do cabeçalho da tabela */
+    color: #ffffff; /* Cor clara do texto no cabeçalho */
 }
 
 tr:nth-child(even) {
-    background-color: #f8f9fa; /* Fundo alternado das linhas */
+    background-color: #2b2b2b; /* Fundo alternado das linhas */
 }
 
 /* Alertas */
 .alert {
     padding: 15px;
-    background-color: #f8f9fa;
-    color: #333333;
+    background-color: #333333; /* Fundo escuro */
+    color: #f5f5f5; /* Texto claro */
     border-radius: 5px;
     margin-bottom: 20px;
 }
 
 .alert-success {
-    background-color: #d4edda; /* Cor verde para alertas de sucesso */
+    background-color: #4caf50; /* Cor verde escura para alertas de sucesso */
 }
 
 .alert-error {
-    background-color: #f8d7da; /* Cor vermelha para alertas de erro */
+    background-color: #f44336; /* Cor vermelha escura para alertas de erro */
 }

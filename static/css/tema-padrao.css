@@ -1,25 +1,25 @@
 /* Tema claro - theme.css */
 
 .cor-secundaria {
-    /* ouro brilhante */
+    /* Ouro brilhante */
     background-color: #FFD700;
 }
 
 .cor-primaria {
-    /*  prata claro  */
+    /* Prata claro */
     background-color: #C0C0C0;
 }
 
 .navbar-theme {
-    background-color: #C0C0C0; /* Cor de fundo azul da barra de navegação */
+    background-color: #C0C0C0; /* Cor de fundo da barra de navegação */
     color: #ffffff; /* Cor do texto na barra de navegação */
-    border-bottom: 2px solid #FFD700; /* Borda branca na parte inferior */
+    border-bottom: 2px solid #FFD700; /* Borda dourada na parte inferior */
 }
 
 .footer-theme {
-    background-color: #C0C0C0; /* Cor de fundo azul da barra de navegação */
-    color: #ffffff; /* Cor do texto na barra de navegação */
-    border-top: 2px solid #FFD700; /* Borda branca na parte inferior */
+    background-color: #C0C0C0; /* Cor de fundo do rodapé */
+    color: #ffffff; /* Cor do texto no rodapé */
+    border-top: 2px solid #FFD700; /* Borda dourada na parte superior */
 }
 
 .title-theme {
@@ -27,14 +27,14 @@
 }
 
 .btn-theme {
-    color: #000;
+    color: #000; /* Texto escuro nos botões */
 }
 
 /* Ajuste de cores para fundo e texto */
 body {
     background-color: #ffffff; /* Cor de fundo clara */
-    color: #ffffcc; /* Cor de texto escura */
-    font-family: 'Noto Serif', serif; /* Apply the font to the body */
+    color: #333333; /* Cor de texto escura */
+    font-family: 'Noto Serif', serif; /* Aplicar fonte ao corpo */
 }
 
 /* Links */
@@ -85,7 +85,7 @@ table {
 
 th, td {
     padding: 10px;
-    border: 1px solid #dee2e6;
+    border: 1px solid #dee2e6; /* Borda cinza clara */
     text-align: left;
 }
 
@@ -101,8 +101,8 @@ tr:nth-child(even) {
 /* Alertas */
 .alert {
     padding: 15px;
-    background-color: #f8f9fa;
-    color: #333333;
+    background-color: #f8f9fa; /* Fundo claro */
+    color: #333333; /* Texto escuro */
     border-radius: 5px;
     margin-bottom: 20px;
 }
