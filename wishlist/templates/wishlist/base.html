@@ -1,5 +1,4 @@
 {% load static %}
-<!DOCTYPE html>
 <html lang="pt-BR">
 <head>
     <meta charset="UTF-8">
@@ -15,7 +14,7 @@
 <!-- Navbar -->
 <nav class="navbar navbar-expand-lg navbar-light bg-light">
     <div class="container">
-        <a class="navbar-brand" href="#">Celebramos!</a>
+        <a class="navbar-brand" href="{% url 'home' %}">Celebramos!</a>
         <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav"
                 aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
             <span class="navbar-toggler-icon"></span>
@@ -88,60 +87,13 @@
     </div>
 </nav>
 
-<!-- Hero Section -->
-<div class="hero-section"
-     style="background-image: url('https://www.example.com/your-image.jpg'); height: 70vh; background-size: cover; display: flex; align-items: center; justify-content: center; color: white;">
-    <div class="text-center">
-        <h1>Bem-vindo ao Celebramos!</h1>
-        <p>Seu espaço de amor e carinho.</p>
-        <a href="#" class="btn btn-primary">Saiba Mais</a>
+<div class="content">
+    <div class="container py-5">
+        {% block conteudo %}
+
+        {% endblock %}
     </div>
 </div>
-
-<!-- About Section -->
-<div class="container my-5">
-    <h2>Sobre Nós</h2>
-    <p>Eaaaa</p>
-</div>
-
-<!-- Services Section -->
-<div class="container my-5">
-    <h2 class="text-center">Nossos Serviços</h2>
-    <div class="row justify-content-center">
-        <div class="col-6 col-md-4 d-flex justify-content-center">
-            <div class="card d-flex flex-column" style="height: 100%;">
-                <img src="https://www.example.com/service1.jpg" class="card-img-top" alt="Wishlist Básica">
-                <div class="card-body d-flex flex-column flex-grow-1">
-                    <h5 class="card-title">Wishlist Básica</h5>
-                    <h4 class="card-subtitle mb-2 text-body-secondary">R$ 19,99</h4>
-                    <p class="card-text">1 foto.</p>
-                    <p class="card-text">Sem música.</p>
-                    <p class="card-text">Não reutilizável.</p>
-                    <p class="card-text">3 meses online.</p>
-                    <div class="mt-auto">
-                        <a href="#" class="btn btn-primary">Quero minha Wishlist!</a>
-                    </div>
-                </div>
-            </div>
-        </div>
-        <div class="col-6 col-md-4 d-flex justify-content-center">
-            <div class="card d-flex flex-column" style="height: 100%;">
-                <img src="https://www.example.com/service2.jpg" class="card-img-top" alt="Wishlist Profissional">
-                <div class="card-body d-flex flex-column flex-grow-1">
-                    <h5 class="card-title">Wishlist Profissional</h5>
-                    <h4 class="card-subtitle mb-2 text-body-secondary">R$ 49,99</h4>
-                    <p class="card-text">3 fotos/site.</p>
-                    <p class="card-text">1 música/site.</p>
-                    <p class="card-text">Reutilizável.</p>
-                    <p class="card-text">1 ano online.</p>                    <div class="mt-auto">
-                        <a href="#" class="btn btn-primary">Quero minha Wishlist!</a>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </div>
-</div>
-
 
 <!-- Footer -->
 <footer class="bg-light text-center text-lg-start mt-5">

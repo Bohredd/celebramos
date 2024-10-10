@@ -1,25 +1,53 @@
-from django.shortcuts import render
+from django.shortcuts import render, redirect
 
-from wishlist.forms import SiteForm
-
+from .forms import ListaForm, ItemFormSet
+from .models import Lista, Item, Site
 
 def homeview(request):
     return render(request, 'wishlist/home.html')
 
 def criar_site(request):
     if request.method == 'POST':
-        form = SiteForm(request.POST)
-        print(form.is_valid())
-        print(form.cleaned_data)
-        if form.is_valid():
-            # Processar o formulário
-            # form.cleaned_data['tipo'], form.cleaned_data['nome'] - dados disponíveis aqui
-            # Salvar no banco de dados ou realizar outras ações necessárias
-            pass
-    else:
-        form = SiteForm()
+        lista_form = ListaForm(request.POST)
 
-    return render(request, 'wishlist/criar_site.html', {'form': form})
+        if lista_form.is_valid():
+            if 'nome' in request.POST:
+                nome = request.POST.get('nome')
+                lista = Lista.objects.create(nome=nome)
+                site = Site.objects.create(nome=nome, url=nome, slug=nome, comprador=request.user, lista=lista)
+                site.save()
+
+            item_formset = ItemFormSet(request.POST)
+
+            if item_formset.is_valid():
+                quantia_itens = request.POST.get('form-TOTAL_FORMS')
+
+                for item in range(0, int(quantia_itens) + 1):
+                    item_nome = request.POST.get(f'form-{item}-nome')
+                    item_descricao = request.POST.get(f'form-{item}-descricao')
+                    item_site = request.POST.get(f'form-{item}-site')
+
+                    if item_nome:
+                        item = Item.objects.create(
+                            nome=item_nome,
+                            descricao=item_descricao,
+                            site=item_site,
+                        )
+
+                        lista.itens.add(item)
+                        lista.save()
+
+            return redirect('base')
+
+    else:
+        lista_form = ListaForm()
+
+    item_formset = ItemFormSet(queryset=Item.objects.none())
+
+    return render(request, 'wishlist/criar_site.html', {
+        'lista_form': lista_form,
+        'item_formset': item_formset,
+    })
 
 def base(request):
     return render(request, 'wishlist/base.html')

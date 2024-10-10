@@ -13,8 +13,8 @@ class Site(models.Model):
 
 class Item(models.Model):
     nome = models.CharField(max_length=100)
-    descricao = models.TextField()
-    site = models.ForeignKey(Site, on_delete=models.CASCADE)
+    descricao = models.TextField(blank=True, null=True)
+    site = models.CharField(max_length=100, blank=True, null=True)
     comprado = models.BooleanField(default=False)
 
     def __str__(self):

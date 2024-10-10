@@ -1,31 +1,56 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Criar Site</title>
-</head>
-<body>
-    <h1>Criar Novo Site ou Loja</h1>
+{% extends 'wishlist/base.html' %}
 
-    <form method="POST">
-        {% csrf_token %}
-        <div>
-            <label for="{{ form.basico.id_for_label }}">{{ form.basico.label_tag }}</label>
-            {{ form.basico }}
-            <small>{{ form.basico.help_text }}</small>
-        </div>
-        <div>
-            <label for="{{ form.profissional.id_for_label }}">{{ form.profissional.label_tag }}</label>
-            {{ form.profissional }}
-            <small>{{ form.profissional.help_text }}</small>
-        </div>
-        <div>
-            <label for="{{ form.nome.id_for_label }}">{{ form.nome.label_tag }}</label>
-            {{ form.nome }}
+{% block conteudo %}
+
+<h1>Criar Nova Lista com Itens</h1>
+<form id="lista-form" method="POST">
+    {% csrf_token %}
+
+    {{ lista_form.as_p }}
+
+    <h2>Itens</h2>
+    <div id="item-container">
+        {{ item_formset.management_form }}
+
+        <div class="item-form">
+            <label for="id_form-0-nome">Nome do Item:</label>
+            <input type="text" name="form-0-nome" id="id_form-0-nome" required><br>
+
+            <label for="id_form-0-descricao">Descrição do Item:</label>
+            <textarea name="form-0-descricao" id="id_form-0-descricao" required></textarea><br>
+
+            <label for="id_form-0-site">Link de onde Comprar:</label>
+            <input type="url" name="form-0-site" id="id_form-0-site" placeholder="https://exemplo.com" required><br>
         </div>
 
-        <button type="submit">Criar</button>
-    </form>
-</body>
-</html>
+    </div>
+
+    <button type="button" id="add-item">Adicionar Item</button>
+    <button type="submit">Criar Lista com Itens</button>
+</form>
+
+<script>
+    let itemCount = 1;
+
+    document.getElementById('add-item').addEventListener('click', function () {
+        const newItemForm = document.createElement('div');
+        newItemForm.classList.add('item-form');
+
+        newItemForm.innerHTML = `
+            <label for="id_form-${itemCount}-nome">Nome do Item:</label>
+            <input type="text" name="form-${itemCount}-nome" id="id_form-${itemCount}-nome" required><br>
+
+            <label for="id_form-${itemCount}-descricao">Descrição do Item:</label>
+            <textarea name="form-${itemCount}-descricao" id="id_form-${itemCount}-descricao" required></textarea><br>
+
+            <label for="id_form-${itemCount}-site">Link de onde Comprar:</label>
+            <input type="url" name="form-${itemCount}-site" id="id_form-${itemCount}-site" placeholder="https://exemplo.com" required><br>
+        `;
+
+        document.getElementById('item-container').appendChild(newItemForm);
+
+        document.getElementById('id_form-TOTAL_FORMS').value = ++itemCount;
+    });
+</script>
+
+{% endblock %}
