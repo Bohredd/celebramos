@@ -18,10 +18,10 @@ class Site(models.Model):
     slug = models.SlugField(max_length=100, unique=True)
     pago = models.BooleanField(default=False)
     comprador = models.ForeignKey('usuarios.Usuario', on_delete=models.CASCADE)
-    lista = models.ForeignKey('Lista', on_delete=models.CASCADE)
+    listas = models.ManyToManyField('Lista')
+    lista_ativa = models.ForeignKey('Lista', on_delete=models.CASCADE, related_name='lista_ativa')
     tipo = models.ForeignKey('TipoWishlist', on_delete=models.CASCADE)
     criado_em = models.DateTimeField(auto_now_add=True)
-
     def __str__(self):
         return self.nome
 

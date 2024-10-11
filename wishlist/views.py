@@ -25,7 +25,8 @@ def criar_site(request):
 
                 nome = request.POST.get('nome')
                 lista = Lista.objects.create(nome=nome)
-                site = Site.objects.create(nome=nome, url=nome, slug=nome, comprador=request.user, lista=lista, tipo=tipo_wish)
+                site = Site.objects.create(nome=nome, url=nome, slug=nome, comprador=request.user, lista_aitva=lista, tipo=tipo_wish)
+                site.listas.add(lista)
                 site.save()
 
             item_formset = ItemFormSet(request.POST)

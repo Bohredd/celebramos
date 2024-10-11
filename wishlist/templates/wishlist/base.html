@@ -20,23 +20,9 @@
             <span class="navbar-toggler-icon"></span>
         </button>
         <div class="collapse navbar-collapse" id="navbarNav">
-            <!--            <ul class="navbar-nav ms-auto">-->
-            <!--                <li class="nav-item">-->
-            <!--                    <a class="nav-link active" aria-current="page" href="#">Início</a>-->
-            <!--                </li>-->
-            <!--                <li class="nav-item">-->
-            <!--                    <a class="nav-link" href="#">Sobre</a>-->
-            <!--                </li>-->
-            <!--                <li class="nav-item">-->
-            <!--                    <a class="nav-link" href="#">Serviços</a>-->
-            <!--                </li>-->
-            <!--                <li class="nav-item">-->
-            <!--                    <a class="nav-link" href="#">Contato</a>-->
-            <!--                </li>-->
-            <!--            </ul>-->
             <div class="d-flex flex-row align-items-center ms-auto">
                 <a href="{% url 'home_pt' %}" class="btn btn-outline-primary btn-sm me-2 d-flex align-items-center">
-                    Português-BR
+                    pt-BR
                     <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" class="ms-2" viewBox="0 0 32 32">
                         <rect x="1" y="4" width="30" height="24" rx="4" ry="4" fill="#459a45"></rect>
                         <path d="M27,4H5c-2.209,0-4,1.791-4,4V24c0,2.209,1.791,4,4,4H27c2.209,0,4-1.791,4-4V8c0-2.209-1.791-4-4-4Zm3,20c0,1.654-1.346,3-3,3H5c-1.654,0-3-1.346-3-3V8c0-1.654,1.346-3,3-3H27c1.654,0,3,1.346,3,3V24Z"
@@ -47,7 +33,7 @@
                 </a>
 
                 <a href="{% url 'home_en' %}" class="btn btn-outline-secondary btn-sm me-2 d-flex align-items-center">
-                    English-US
+                    en-US
                     <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" class="ms-2" viewBox="0 0 32 32">
                         <rect x="1" y="4" width="30" height="24" rx="4" ry="4" fill="#fff"></rect>
                         <path d="M1.638,5.846H30.362c-.711-1.108-1.947-1.846-3.362-1.846H5c-1.414,0-2.65,.738-3.362,1.846Z"
@@ -65,7 +51,8 @@
                     </svg>
                 </a>
 
-                <button id="themeToggleButton" class="btn btn-dark btn-sm" onclick="toggleTheme()">
+                <button id="themeToggleButton" class="btn btn-dark btn-sm me-2 d-flex align-items-center"
+                        onclick="toggleTheme()">
                     <span id="darkIcon" style="display: none;">
                         <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor"
                              class="bi bi-lightbulb-off"
@@ -82,6 +69,28 @@
                         </svg>
                     </span>
                 </button>
+
+                <a href="
+                    {% if request.user.is_authenticated %}
+                        {% url 'usuarios:perfil' %}
+                    {% else %}
+                        {% url 'login' %}
+                    {% endif %}
+                        "
+                   class="btn btn-dark btn-sm me-2 d-flex align-items-center">
+                    {% if request.user.is_authenticated %}
+                    <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor"
+                         class="bi bi-person-fill" viewBox="0 0 16 16">
+                        <path d="M3 14s-1 0-1-1 1-4 6-4 6 3 6 4-1 1-1 1zm5-6a3 3 0 1 0 0-6 3 3 0 0 0 0 6"/>
+                    </svg>
+                    {% else %}
+                    <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor"
+                         class="bi bi-person-fill-add" viewBox="0 0 16 16">
+                        <path d="M12.5 16a3.5 3.5 0 1 0 0-7 3.5 3.5 0 0 0 0 7m.5-5v1h1a.5.5 0 0 1 0 1h-1v1a.5.5 0 0 1-1 0v-1h-1a.5.5 0 0 1 0-1h1v-1a.5.5 0 0 1 1 0m-2-6a3 3 0 1 1-6 0 3 3 0 0 1 6 0"/>
+                        <path d="M2 13c0 1 1 1 1 1h5.256A4.5 4.5 0 0 1 8 12.5a4.5 4.5 0 0 1 1.544-3.393Q8.844 9.002 8 9c-5 0-6 3-6 4"/>
+                    </svg>
+                    {% endif %}
+                </a>
             </div>
         </div>
     </div>

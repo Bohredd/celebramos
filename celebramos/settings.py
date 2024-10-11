@@ -128,3 +128,5 @@ STATICFILES_DIRS = [
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 
 AUTH_USER_MODEL = "usuarios.Usuario"
+
+MAX_TIME_TO_PAY_IN_DAYS = 3
