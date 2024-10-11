@@ -25,7 +25,7 @@ def criar_site(request):
 
                 nome = request.POST.get('nome')
                 lista = Lista.objects.create(nome=nome)
-                site = Site.objects.create(nome=nome, url=nome, slug=nome, comprador=request.user, lista=lista)
+                site = Site.objects.create(nome=nome, url=nome, slug=nome, comprador=request.user, lista=lista, tipo=tipo_wish)
                 site.save()
 
             item_formset = ItemFormSet(request.POST)
@@ -48,7 +48,7 @@ def criar_site(request):
                         lista.itens.add(item)
                         lista.save()
 
-            return redirect('base')
+            return redirect('checkout', tipo=tipo)
 
     else:
         lista_form = ListaForm()
@@ -62,3 +62,19 @@ def criar_site(request):
 
 def base(request):
     return render(request, 'wishlist/base.html')
+
+
+def checkout(request, tipo):
+
+    print("Tipo passado: ", tipo)
+
+    tipo_wish = TipoWishlist.objects.get(
+        nome=tipo.title()
+    )
+
+    print(tipo_wish)
+
+
+    return render(request, 'wishlist/checkout.html', {
+        'tipo': tipo_wish
+    })

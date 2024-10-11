@@ -7,4 +7,5 @@ urlpatterns = [
     path('cw/basico/', views.criar_site, name='wish_basica'),
     path('cw/profissional/', views.criar_site, name='wish_profissional'),
     path('base/', views.base, name='base'),
+    path("checkout/<str:tipo>", views.checkout, name="checkout"),
 ]
