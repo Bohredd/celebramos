@@ -2,11 +2,12 @@ from django.shortcuts import render, redirect
 
 from .forms import ListaForm, ItemFormSet
 from .models import Lista, Item, Site, TipoWishlist
-
+from django.contrib.auth.decorators import login_required
 
 def homeview(request):
     return render(request, 'wishlist/home.html')
 
+@login_required
 def criar_site(request):
     if request.method == 'POST':
         lista_form = ListaForm(request.POST)
@@ -25,7 +26,7 @@ def criar_site(request):
 
                 nome = request.POST.get('nome')
                 lista = Lista.objects.create(nome=nome)
-                site = Site.objects.create(nome=nome, url=nome, slug=nome, comprador=request.user, lista_aitva=lista, tipo=tipo_wish)
+                site = Site.objects.create(nome=nome, url=nome, slug=nome, comprador=request.user, lista_ativa=lista, tipo=tipo_wish)
                 site.listas.add(lista)
                 site.save()
 

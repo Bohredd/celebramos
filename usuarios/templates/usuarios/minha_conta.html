@@ -1,10 +1,15 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <title>Title</title>
-</head>
-<body>
+{% extends 'wishlist/base.html' %}
 
-</body>
-</html>
+{% block conteudo %}
+
+<h2>Minha Conta</h2>
+
+<p>Nome completo: {{ usuario.nome_completo }}</p>
+<p>Email: {{ usuario.email }}</p>
+<p>CPF: {{ usuario.cpf }}</p>
+<p>Telefone: {{ usuario.telefone }}</p>
+
+<a href="{% url 'usuarios:logout' %}">Sair</a>
+
+
+{% endblock %}
