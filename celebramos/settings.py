@@ -131,4 +131,5 @@ AUTH_USER_MODEL = "usuarios.Usuario"
 
 MAX_TIME_TO_PAY_IN_DAYS = 3
 
-LOGIN_URL = 'login/'
+LOGIN_URL = 'usuarios:login'
+LOGIN_REDIRECT_URL = ''

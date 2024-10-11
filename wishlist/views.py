@@ -8,7 +8,7 @@ def homeview(request):
     return render(request, 'wishlist/home.html')
 
 @login_required
-def criar_site(request):
+def criar_site(request, tipo):
     if request.method == 'POST':
         lista_form = ListaForm(request.POST)
 
@@ -16,9 +16,6 @@ def criar_site(request):
 
         if lista_form.is_valid():
             if 'nome' in request.POST:
-
-                tipo = request.path.split('/')[2]
-                print("TIPO: ", tipo)
 
                 tipo_wish = TipoWishlist.objects.get(
                     nome=tipo.title()

@@ -17,7 +17,7 @@ def login(request):
             if user is not None:
                 auth_login(request, user)
                 messages.success(request, f"Bem-vindo(a), {user.get_primeiro_nome()}!")
-                return redirect('minha_conta')
+                return redirect('usuarios:perfil')
             else:
                 messages.error(request, "Usuário ou senha incorretos.")
         else:
