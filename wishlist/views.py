@@ -1,7 +1,8 @@
 from django.shortcuts import render, redirect
 
 from .forms import ListaForm, ItemFormSet
-from .models import Lista, Item, Site
+from .models import Lista, Item, Site, TipoWishlist
+
 
 def homeview(request):
     return render(request, 'wishlist/home.html')
@@ -10,8 +11,18 @@ def criar_site(request):
     if request.method == 'POST':
         lista_form = ListaForm(request.POST)
 
+        print(request.path)
+
         if lista_form.is_valid():
             if 'nome' in request.POST:
+
+                tipo = request.path.split('/')[2]
+                print("TIPO: ", tipo)
+
+                tipo_wish = TipoWishlist.objects.get(
+                    nome=tipo.title()
+                )
+
                 nome = request.POST.get('nome')
                 lista = Lista.objects.create(nome=nome)
                 site = Site.objects.create(nome=nome, url=nome, slug=nome, comprador=request.user, lista=lista)
