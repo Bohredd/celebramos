@@ -35,3 +35,19 @@ class UsuarioCreationForm(forms.ModelForm):
                 notificacoes_renovacao=self.cleaned_data['notificacoes_renovacao'],
             )
         return user
+
+class UsuarioForm(forms.ModelForm):
+    class Meta:
+        model = Usuario
+        fields = ['nome_completo', 'email', 'cpf', 'telefone', 'data_nascimento', 'imagem']
+        widgets = {
+            'data_nascimento': forms.DateInput(attrs={'type': 'date'}),
+        }
+
+class ConfiguracoesUsuarioForm(forms.ModelForm):
+    class Meta:
+        model = ConfiguracoesUsuario
+        fields = ['tema', 'notificacoes_itens', 'notificacoes_renovacao']
+        widgets = {
+            'tema': forms.RadioSelect,
+        }

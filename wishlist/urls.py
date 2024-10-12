@@ -11,4 +11,6 @@ urlpatterns = [
     path("compartilhar/<int:lista_id>/", views.gerar_qr_code_compartilhamento, name="compartilhar"),
     path("lista/ver/<int:lista_id>/", views.ver_lista, name="ver_lista"),
     path("wishlists/", views.tipos_wishlist, name="tipos_wishlist"),
+    path("wishlists/minhas", views.minhas_wishlists, name="minhas_wishlists"),
+    path("wishlist/<int:wishlist_id>", views.wishlist_detalhes, name="wishlist"),
 ]

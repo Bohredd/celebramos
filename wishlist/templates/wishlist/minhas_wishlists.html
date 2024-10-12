@@ -1,0 +1,21 @@
+{% extends 'wishlist/base.html' %}
+
+{% block conteudo %}
+
+<h1>Minhas Wishlists</h1>
+
+{% if wishlists %}
+    <ul>
+        {% for wishlist in wishlists %}
+            <li>
+                <a href="{% url 'wishlist:detalhes' wishlist.id %}">{{ wishlist.nome }}</a>
+            </li>
+        {% endfor %}
+    </ul>
+{% else %}
+    <p>Você ainda não criou nenhuma wishlist.</p>
+{% endif %}
+
+<a href="{% url 'wishlist:tipos_wishlist' %}">Criar Wishlist</a>
+
+{% endblock %}

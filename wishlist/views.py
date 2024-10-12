@@ -118,3 +118,20 @@ def ver_lista(request, lista_id):
         'lista': lista
 
     })
+
+@login_required
+def minhas_wishlists(request):
+
+    listas = Lista.objects.filter(site__comprador=request.user, site__ativo=True)
+
+    return render(request, 'wishlist/minhas_wishlists.html', {
+        'listas': listas
+    })
+
+@login_required
+def wishlist_detalhes(request, lista_id):
+    lista = Lista.objects.get(id=lista_id)
+
+    return render(request, 'wishlist/wishlist_detalhes.html', {
+        'lista': lista
+    })

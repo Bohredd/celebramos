@@ -2,12 +2,19 @@
 
 {% block conteudo %}
 
-<h2>Minha Conta</h2>
+<h1>Minha Conta</h1>
 
-<p>Nome completo: {{ usuario.nome_completo }}</p>
-<p>Email: {{ usuario.email }}</p>
-<p>CPF: {{ usuario.cpf }}</p>
-<p>Telefone: {{ usuario.telefone }}</p>
+<form method="POST" enctype="multipart/form-data">
+    {% csrf_token %}
+
+    <h2>Dados do Usuário</h2>
+    {{ usuario_form.as_p }}
+
+    <h2>Configurações</h2>
+    {{ configuracoes_form.as_p }}
+
+    <button type="submit">Salvar Alterações</button>
+</form>
 
 <a href="{% url 'usuarios:logout' %}">Sair</a>
 
