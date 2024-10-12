@@ -1,1 +1,21 @@
-ver lista {{lista}}
+{% extends 'wishlist/base.html' %}
+
+{% block conteudo %}
+
+{% for item in lista.itens.all %}
+    <div class="card mb-3">
+        <div class="row g-0">
+            <div class="col-md-4">
+                <img src="{{ item.imagem.url }}" class="img-fluid rounded-start" alt="{{ item.nome }}">
+            </div>
+            <div class="col-md-8">
+                <div class="card-body">
+                    <h5 class="card-title">{{ item.nome }}</h5>
+                    <p class="card-text">{{ item.descricao }}</p>
+                </div>
+            </div>
+        </div>
+    </div>
+{% endfor %}
+
+{% endblock %}
