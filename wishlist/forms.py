@@ -10,6 +10,6 @@ class ListaForm(forms.ModelForm):
 class ItemForm(forms.ModelForm):
     class Meta:
         model = Item
-        fields = ['nome', 'descricao', 'site']
+        fields = ['nome', 'descricao', 'site', 'link_imagem']
 
 ItemFormSet = modelformset_factory(Item, form=ItemForm, extra=0)

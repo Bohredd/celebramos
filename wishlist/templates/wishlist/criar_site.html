@@ -14,13 +14,18 @@
 
         <div class="item-form">
             <label for="id_form-0-nome">Nome do Item:</label>
-            <input type="text" name="form-0-nome" id="id_form-0-nome" required><br>
+            <input type="text" name="form-0-nome" id="id_form-0-nome" required placeholder="Nome do Presente"><br>
 
             <label for="id_form-0-descricao">Descrição do Item:</label>
-            <textarea name="form-0-descricao" id="id_form-0-descricao" required></textarea><br>
+            <textarea name="form-0-descricao" id="id_form-0-descricao" required
+                      placeholder="Descrição do Presente"></textarea><br>
 
             <label for="id_form-0-site">Link de onde Comprar:</label>
             <input type="url" name="form-0-site" id="id_form-0-site" placeholder="https://exemplo.com" required><br>
+
+            <label for="id_form-0-imagem">Link da Imagem:</label>
+            <input type="url" name="form-0-imagem" id="id_form-0-imagem" placeholder="https://exemplo.com/imagem.jpg"
+                   required><br>
         </div>
 
     </div>
@@ -45,7 +50,10 @@
 
             <label for="id_form-${itemCount}-site">Link de onde Comprar:</label>
             <input type="url" name="form-${itemCount}-site" id="id_form-${itemCount}-site" placeholder="https://exemplo.com" required><br>
-        `;
+
+            <label for="id_form-${itemCount}-imagem">Link da Imagem:</label>
+            <input type="url" name="form-${itemCount}-imagem" id="id_form-${itemCount}-imagem" placeholder="https://exemplo.com/imagem.jpg" required><br>
+`;
 
         document.getElementById('item-container').appendChild(newItemForm);
 
