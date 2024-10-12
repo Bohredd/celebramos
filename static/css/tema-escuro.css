@@ -1,4 +1,30 @@
 /* Tema escuro - theme-dark.css */
+.oswald-regular {
+  font-family: "Oswald", sans-serif;
+  font-optical-sizing: auto;
+  font-weight: 200;
+  font-style: normal;
+}
+
+.oswald-medium {
+  font-family: "Oswald", sans-serif;
+  font-optical-sizing: auto;
+  font-weight: 200;
+  font-style: normal;
+}
+
+.oswald-title {
+  font-family: "Oswald", sans-serif;
+  font-optical-sizing: auto;
+  font-weight: 200;
+  font-style: normal;
+}
+
+.titulo-importante {
+    font-family: "Oswald", sans-serif;
+    font-size: 1.5em;
+    color: #333333;
+}
 
 .cor-secundaria {
     /* Ouro escuro */

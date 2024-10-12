@@ -15,7 +15,6 @@ class TipoWishlist(models.Model):
 class Site(models.Model):
     nome = models.CharField(max_length=100)
     url = models.URLField()
-    slug = models.SlugField(max_length=100, unique=True)
     pago = models.BooleanField(default=False)
     comprador = models.ForeignKey('usuarios.Usuario', on_delete=models.CASCADE)
     listas = models.ManyToManyField('Lista')

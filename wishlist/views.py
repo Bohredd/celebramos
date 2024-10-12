@@ -1,11 +1,18 @@
 from django.shortcuts import render, redirect
+from django.urls import reverse
 
 from .forms import ListaForm, ItemFormSet
 from .models import Lista, Item, Site, TipoWishlist
 from django.contrib.auth.decorators import login_required
+import base64
+import qrcode
+from io import BytesIO
+from django.http import HttpResponse
+
 
 def homeview(request):
     return render(request, 'wishlist/home.html')
+
 
 @login_required
 def criar_site(request, tipo):
@@ -16,14 +23,14 @@ def criar_site(request, tipo):
 
         if lista_form.is_valid():
             if 'nome' in request.POST:
-
                 tipo_wish = TipoWishlist.objects.get(
                     nome=tipo.title()
                 )
 
                 nome = request.POST.get('nome')
                 lista = Lista.objects.create(nome=nome)
-                site = Site.objects.create(nome=nome, url=nome, slug=nome, comprador=request.user, lista_ativa=lista, tipo=tipo_wish)
+                site = Site.objects.create(nome=nome, url=nome, comprador=request.user, lista_ativa=lista,
+                                           tipo=tipo_wish)
                 site.listas.add(lista)
                 site.save()
 
@@ -59,21 +66,52 @@ def criar_site(request, tipo):
         'item_formset': item_formset,
     })
 
+
 def base(request):
     return render(request, 'wishlist/base.html')
 
 
 def checkout(request, tipo):
-
     print("Tipo passado: ", tipo)
 
     tipo_wish = TipoWishlist.objects.get(
         nome=tipo.title()
     )
 
-    print(tipo_wish)
-
-
     return render(request, 'wishlist/checkout.html', {
         'tipo': tipo_wish
+    })
+
+
+def gerar_qr_code_compartilhamento(request, lista_id):
+    url = request.build_absolute_uri(reverse('ver_lista', args=[lista_id]))
+
+    qr = qrcode.QRCode(
+        version=1,
+        error_correction=qrcode.constants.ERROR_CORRECT_L,
+        box_size=10,
+        border=4,
+    )
+    qr.add_data(url)
+    qr.make(fit=True)
+
+    img = qr.make_image(fill='black', back_color='white')
+
+    buffer = BytesIO()
+    img.save(buffer, format="PNG")
+    img_str = base64.b64encode(buffer.getvalue()).decode("utf-8")
+
+    context = {
+        'qr_code_image': img_str,
+        'url': url
+    }
+    return render(request, 'wishlist/qr_code_compartilhamento.html', context)
+
+
+def ver_lista(request, lista_id):
+    lista = Lista.objects.get(id=lista_id)
+
+    return render(request, 'wishlist/ver_lista.html', {
+        'lista': lista
+
     })

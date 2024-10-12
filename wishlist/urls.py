@@ -7,4 +7,6 @@ urlpatterns = [
     path('cw/<str:tipo>', views.criar_site, name='wishlist_criar'),
     path('base/', views.base, name='base'),
     path("checkout/<str:tipo>", views.checkout, name="checkout"),
+    path("compartilhar/<int:lista_id>/", views.gerar_qr_code_compartilhamento, name="compartilhar"),
+    path("lista/ver/<int:lista_id>/", views.ver_lista, name="ver_lista"),
 ]
