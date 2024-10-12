@@ -13,6 +13,9 @@ from django.http import HttpResponse
 def homeview(request):
     return render(request, 'wishlist/home.html')
 
+def tipos_wishlist(request):
+
+    return render(request, 'wishlist/tipos_wishlist.html')
 
 @login_required
 def criar_site(request, tipo):

@@ -6,14 +6,18 @@
     {% csrf_token %}
     {{ form.as_p }}
     <button type="submit">Entrar</button>
+    <p>Não possui conta?</p>
+    <a href="{% url 'usuarios:cadastro' %}">
+        <button type="button">Cadastre-se</button>
+    </a>
 </form>
 
 {% if messages %}
-  <ul>
+<ul>
     {% for message in messages %}
-      <li>{{ message }}</li>
+    <li>{{ message }}</li>
     {% endfor %}
-  </ul>
+</ul>
 {% endif %}
 
 {% endblock %}

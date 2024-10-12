@@ -26,3 +26,24 @@ class Usuario(AbstractUser):
 
     def get_primeiro_nome(self):
         return self.nome_completo.split(" ")[0]
+
+class ConfiguracoesUsuario(models.Model):
+
+    tema = models.CharField(
+        max_length=200,
+        choices=(
+            ('escuro', 'Escuro'),
+            ('claro', 'Claro')
+        ),
+        default='claro',
+    )
+    notificacoes_itens = models.BooleanField(default=False) # quando item for marcado como comprado (item)
+    notificacoes_renovacao = models.BooleanField(default=False)
+    usuario = models.OneToOneField(Usuario, on_delete=models.CASCADE, related_name='configuracoes')
+
+    def get_theme(self):
+        if self.tema == 'claro':
+            return "{% static 'css/tema-padrao.css' %}"
+        else:
+            return "{% static 'css/tema-escuro.css' %}"
+

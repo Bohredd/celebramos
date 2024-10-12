@@ -1,6 +1,7 @@
 # forms.py
 from django import forms
-from .models import Usuario
+from .models import Usuario, ConfiguracoesUsuario
+
 
 class UsuarioCreationForm(forms.ModelForm):
     password = forms.CharField(widget=forms.PasswordInput, label='Senha')
@@ -18,3 +19,19 @@ class UsuarioCreationForm(forms.ModelForm):
             raise forms.ValidationError('As senhas não coincidem.')
 
         return password_confirm
+
+
+    def save(self, commit=True):
+        user = super().save(commit=False)
+        password = self.cleaned_data['password']
+        user.set_password(password)
+        if commit:
+            user.save()
+
+            ConfiguracoesUsuario.objects.create(
+                usuario=user,
+                tema=self.cleaned_data['tema'],
+                notificacoes_itens=self.cleaned_data['notificacoes_itens'],
+                notificacoes_renovacao=self.cleaned_data['notificacoes_renovacao'],
+            )
+        return user
