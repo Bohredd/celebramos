@@ -2,6 +2,7 @@ from __future__ import annotations
 from django.contrib.auth.models import AbstractUser
 from django.db import models
 from usuarios.managers import UsuarioManager
+from django.templatetags.static import static
 
 
 class Usuario(AbstractUser):
@@ -43,7 +44,7 @@ class ConfiguracoesUsuario(models.Model):
 
     def get_theme(self):
         if self.tema == 'claro':
-            return "{% static 'css/tema-padrao.css' %}"
+            return static('css/tema-padrao.css')
         else:
-            return "{% static 'css/tema-escuro.css' %}"
+            return static('css/tema-escuro.css')
 
