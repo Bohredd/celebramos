@@ -1,7 +1,7 @@
 from django.db import models
 
 class TipoWishlist(models.Model):
-    nome = models.CharField(max_length=100)
+    nome = models.CharField(max_length=100, unique=True)
     maximo_fotos_site = models.IntegerField()
     reutilizavel = models.BooleanField(default=False)
     tempo_online_site = models.IntegerField() # tempo em meses

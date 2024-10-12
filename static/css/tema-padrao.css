@@ -1,5 +1,32 @@
 /* Tema claro - theme.css */
 
+.oswald-regular {
+  font-family: "Oswald", sans-serif;
+  font-optical-sizing: auto;
+  font-weight: 200;
+  font-style: normal;
+}
+
+.oswald-medium {
+  font-family: "Oswald", sans-serif;
+  font-optical-sizing: auto;
+  font-weight: 200;
+  font-style: normal;
+}
+
+.oswald-title {
+  font-family: "Oswald", sans-serif;
+  font-optical-sizing: auto;
+  font-weight: 200;
+  font-style: normal;
+}
+
+.titulo-importante {
+    font-family: "Oswald", sans-serif;
+    font-size: 1.5em;
+    color: #333333;
+}
+
 .cor-secundaria {
     /* Ouro brilhante */
     background-color: #FFD700;
@@ -7,19 +34,18 @@
 
 .cor-primaria {
     /* Prata claro */
-    background-color: #C0C0C0;
+    background-color: #caff00;
 }
 
 .navbar-theme {
-    background-color: #C0C0C0; /* Cor de fundo da barra de navegação */
+    background-color: #FFD700; /* Cor de fundo da barra de navegação */
     color: #ffffff; /* Cor do texto na barra de navegação */
-    border-bottom: 2px solid #FFD700; /* Borda dourada na parte inferior */
+    /*border-bottom: 2px solid #FFD700; !* Borda dourada na parte inferior *!*/
 }
 
 .footer-theme {
-    background-color: #C0C0C0; /* Cor de fundo do rodapé */
+    background-color: #FFD700; /* Cor de fundo do rodapé */
     color: #ffffff; /* Cor do texto no rodapé */
-    border-top: 2px solid #FFD700; /* Borda dourada na parte superior */
 }
 
 .title-theme {
@@ -32,7 +58,7 @@
 
 /* Ajuste de cores para fundo e texto */
 body {
-    background-color: #ffffff; /* Cor de fundo clara */
+    background-color: #aea9a9; /* Cor de fundo clara */
     color: #333333; /* Cor de texto escura */
     font-family: 'Noto Serif', serif; /* Aplicar fonte ao corpo */
 }
