@@ -2,20 +2,23 @@
 
 {% block conteudo %}
 
-<h1>Minhas Wishlists</h1>
+<h1>Minhas Lista</h1>
 
-{% if wishlists %}
+{% if listas %}
     <ul>
-        {% for wishlist in wishlists %}
+        {% for lista in listas %}
             <li>
-                <a href="{% url 'wishlist:detalhes' wishlist.id %}">{{ wishlist.nome }}</a>
+                <a href="">{{ lista.id }}</a>
+                {% if lista == site.lista_ativa %}
+                    <span>(Ativa)</span>
+                {% endif %}
             </li>
         {% endfor %}
     </ul>
 {% else %}
-    <p>Você ainda não criou nenhuma wishlist.</p>
+    <p>Você ainda não criou nenhuma Lista.</p>
 {% endif %}
 
-<a href="{% url 'wishlist:tipos_wishlist' %}">Criar Wishlist</a>
+<a href="{% url 'tipos_wishlist' %}">Criar Wishlist</a>
 
 {% endblock %}

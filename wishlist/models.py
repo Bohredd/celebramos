@@ -18,12 +18,31 @@ class Site(models.Model):
     pago = models.BooleanField(default=False)
     comprador = models.ForeignKey('usuarios.Usuario', on_delete=models.CASCADE)
     listas = models.ManyToManyField('Lista')
-    lista_ativa = models.ForeignKey('Lista', on_delete=models.CASCADE, related_name='lista_ativa')
+    lista_ativa = models.ForeignKey('Lista', on_delete=models.CASCADE, related_name='lista_ativa', null=True, blank=True)
     tipo = models.ForeignKey('TipoWishlist', on_delete=models.CASCADE)
     criado_em = models.DateTimeField(auto_now_add=True)
+    ativo = models.BooleanField(default=False)
+
+    pode_reutilizar = models.BooleanField(default=False)
 
     def __str__(self):
         return self.nome
+
+    def save(
+        self,
+        *args,
+        force_insert=False,
+        force_update=False,
+        using=None,
+        update_fields=None,
+    ):
+        if self.id:
+            quantia = self.listas.count()
+            if quantia >= self.tipo.maximo_reutilizacao_sites:
+                self.pode_reutilizar = False
+            else:
+                self.pode_reutilizar = True
+        super().save(*args, force_insert, force_update, using, update_fields)
 
 class Item(models.Model):
     nome = models.CharField(max_length=100)

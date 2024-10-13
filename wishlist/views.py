@@ -7,7 +7,7 @@ from django.contrib.auth.decorators import login_required
 import base64
 import qrcode
 from io import BytesIO
-from django.http import HttpResponse
+from decouple import config
 
 
 def homeview(request):
@@ -18,7 +18,16 @@ def tipos_wishlist(request):
     return render(request, 'wishlist/tipos_wishlist.html')
 
 @login_required
-def criar_site(request, tipo):
+def criar_wishlist(request):
+
+    sites = Site.objects.filter(site__comprador=request.user, site__ativo=True, pode_reutilizar=True)
+
+    return render(request, 'wishlist/criar_wishlist.html', {
+        'sites': sites
+    })
+
+@login_required
+def criar_site(request, tipo, site_id=None):
     if request.method == 'POST':
         lista_form = ListaForm(request.POST)
 
@@ -32,8 +41,13 @@ def criar_site(request, tipo):
 
                 nome = request.POST.get('nome')
                 lista = Lista.objects.create(nome=nome)
-                site = Site.objects.create(nome=nome, url=nome, comprador=request.user, lista_ativa=lista,
-                                           tipo=tipo_wish)
+                if site_id:
+                    site = Site.objects.get(id=site_id)
+                    site.lista_ativa = lista
+                    site.save()
+                else:
+                    site = Site.objects.create(nome=f"Site de {request.user}", url=f"{config('BASE_URL')}/", comprador=request.user, lista_ativa=lista,
+                                               tipo=tipo_wish)
                 site.listas.add(lista)
                 site.save()
 
@@ -86,8 +100,9 @@ def checkout(request, tipo):
     })
 
 
-def gerar_qr_code_compartilhamento(request, lista_id):
-    url = request.build_absolute_uri(reverse('ver_lista', args=[lista_id]))
+def gerar_qr_code_compartilhamento(request):
+    lista_id = Site.objects.get(comprador=request.user, ativo=True).lista_ativa.id
+    url = request.build_absolute_uri(reverse('ver_site', args=[lista_id]))
 
     qr = qrcode.QRCode(
         version=1,
@@ -111,8 +126,10 @@ def gerar_qr_code_compartilhamento(request, lista_id):
     return render(request, 'wishlist/qr_code_compartilhamento.html', context)
 
 
-def ver_lista(request, lista_id):
-    lista = Lista.objects.get(id=lista_id)
+def ver_lista(request, site_id):
+    site = Site.objects.get(id=site_id)
+
+    lista = site.lista_ativa
 
     return render(request, 'wishlist/ver_lista.html', {
         'lista': lista
@@ -122,10 +139,15 @@ def ver_lista(request, lista_id):
 @login_required
 def minhas_wishlists(request):
 
+    print("Usuario: ", request.user)
+
     listas = Lista.objects.filter(site__comprador=request.user, site__ativo=True)
 
+    print("Listas: ", listas)
+
     return render(request, 'wishlist/minhas_wishlists.html', {
-        'listas': listas
+        'listas': listas,
+        'site': Site.objects.get(comprador=request.user, ativo=True)
     })
 
 @login_required

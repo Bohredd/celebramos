@@ -46,7 +46,7 @@ def minha_conta(request):
         if usuario_form.is_valid() and configuracoes_form.is_valid():
             usuario_form.save()
             configuracoes_form.save()
-            return redirect('minha_conta')
+            return redirect('usuarios:perfil')
 
     else:
         usuario_form = UsuarioForm(instance=usuario)
