@@ -13,3 +13,4 @@ class Wishlist(models.Model):
     criado_em = models.DateTimeField(auto_now_add=True)
     creditos_colocados = models.DecimalField(max_digits=10, decimal_places=2)
     link_musica = models.URLField()
+    comprado_por = models.ForeignKey('usuarios.Usuario', on_delete=models.CASCADE, null=True, blank=True)
