@@ -13,7 +13,6 @@ class Usuario(AbstractUser):
         "Nome Completo", max_length=100, blank=False, null=False
     )
     email = models.EmailField("E-mail", blank=True, unique=True)
-    cpf = models.CharField(max_length=14, unique=True, null=True)  # 123.456.789-09
     telefone = models.CharField(max_length=11, blank=True, null=True)  # (11) 98765-4321
     data_nascimento = models.DateField("Data de  Nascimento", blank=True, null=True)
     imagem = models.ImageField(blank=True, null=True, upload_to="usuarios/images")
