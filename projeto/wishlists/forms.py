@@ -1,6 +1,6 @@
 from django import forms
 
-from .models import Wishlist, Item
+from .models import Wishlist, Item, PlanoCredito
 
 class WishlistForm(forms.ModelForm):
     class Meta:
@@ -15,3 +15,6 @@ class ItemForm(forms.ModelForm):
     class Meta:
         model = Item
         fields = ['nome_item', 'link_compra',]
+
+class EscolherPlanoForm(forms.Form):
+    plano_id = forms.IntegerField(widget=forms.HiddenInput())

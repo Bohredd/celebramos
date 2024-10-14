@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>comprar credito</title>
+</head>
+<body>
+
+<form method="post">
+    {% csrf_token %}
+    {{ form.plano_id }} <!-- Campo oculto para armazenar o ID do plano selecionado -->
+
+    <div class="planos">
+        {% for plano in planos %}
+        <div class="plano-card">
+            <h3>{{ plano.nome }}</h3>
+            <p>Quantidade: {{ plano.quantidade }}</p>
+            <p>Preço: R$ {{ plano.preco }}</p>
+            <p>{{ plano.descricao }}</p>
+            <!-- Botão para selecionar o plano -->
+            <button type="submit" class="btn btn-primary" onclick="document.getElementById('id_plano_id').value={{ plano.id }}">
+                Escolher {{ plano.nome }}
+            </button>
+        </div>
+        {% endfor %}
+    </div>
+</form>
+
+</body>
+</html>

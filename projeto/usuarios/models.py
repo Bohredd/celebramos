@@ -48,3 +48,18 @@ class ConfiguracoesUsuario(models.Model):
         else:
             return static('css/tema-escuro.css')
 
+class Transacao(models.Model):
+    usuario = models.ForeignKey(Usuario, on_delete=models.CASCADE)
+    data = models.DateTimeField(auto_now_add=True)
+    creditos_movimentados = models.DecimalField(max_digits=10, decimal_places=0)
+    is_compra = models.BooleanField(default=False)
+    is_debito = models.BooleanField(default=False)
+
+    # if is compra
+    plano_comprado = models.ForeignKey('wishlists.PlanoCredito', on_delete=models.CASCADE, null=True, blank=True)
+
+    # if is debito
+    wishlist = models.ForeignKey('wishlists.Wishlist', on_delete=models.CASCADE, null=True, blank=True)
+
+    def __str__(self):
+        return f'{self.usuario} - {self.creditos_movimentados} - {self.data}'
