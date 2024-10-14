@@ -2,8 +2,9 @@ from django.contrib.auth.decorators import login_required
 from django.shortcuts import render, redirect
 from .forms import WishlistForm, ItemForm
 from django.forms import modelformset_factory
-
+from django.contrib import messages
 from .models import Item
+from django.utils.safestring import mark_safe
 
 
 def pagina_inicial(request):
@@ -28,7 +29,20 @@ def criacao_wishlist(request):
                 item.wishlist = wishlist
                 item.save()
 
-            return redirect('wishlist_list')
+            if wishlist.creditos_colocados > request.user.creditos:
+                wishlist.delete()
+                messages.error(request, f'Você não possui créditos suficientes para criar essa wishlist. Créditos disponíveis: {request.user.creditos}.')
+                messages.info(request, mark_safe(
+                    "Caso queira adicionar mais créditos, clique <a href='/usuarios/creditos'>aqui</a>."))
+                return render(request, 'wishlists/criacao_wishlist.html', {'form': form, 'formset': formset})
+            else:
+                wishlist.foi_paga = True
+                wishlist.valida = True
+                wishlist.save()
+                request.user.creditos -= wishlist.creditos_colocados
+                request.user.save()
+                messages.success(request, 'Wishlist criada com sucesso!')
+                return redirect('wishlist_list')
     else:
         form = WishlistForm()
         formset = ItemFormSet(queryset=Item.objects.none())

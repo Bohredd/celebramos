@@ -16,6 +16,7 @@ class Usuario(AbstractUser):
     telefone = models.CharField(max_length=11, blank=True, null=True)  # (11) 98765-4321
     data_nascimento = models.DateField("Data de  Nascimento", blank=True, null=True)
     imagem = models.ImageField(blank=True, null=True, upload_to="usuarios/images")
+    creditos = models.DecimalField(max_digits=10, decimal_places=0, default=0)
     USERNAME_FIELD = "email"
     REQUIRED_FIELDS = ["nome_completo"]
 
