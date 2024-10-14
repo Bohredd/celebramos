@@ -6,7 +6,54 @@
 </head>
 <body>
 
-    <h1> criacao de wishlist</h1>
+<form method="POST">
+    {% csrf_token %}
+    {{ form.as_p }}
+
+    {{ formset.management_form }}
+    <h3>Itens da Wishlist</h3>
+
+    <div id="formset-container">
+        {% for form in formset %}
+        <div class="form-item">
+            <table>
+                <tr>
+                    <td>{{ form.nome_item.label_tag }}</td>
+                    <td>{{ form.nome_item }}</td>
+                </tr>
+                <tr>
+                    <td>{{ form.link_compra.label_tag }}</td>
+                    <td>{{ form.link_compra }}</td>
+                </tr>
+                <tr>
+                    <td>{{ form.comprado.label_tag }}</td>
+                    <td>{{ form.comprado }}</td>
+                </tr>
+            </table>
+        </div>
+        {% endfor %}
+    </div>
+
+    <button type="button" id="add-more-items">Adicionar Mais Itens</button>
+    <button type="submit">Salvar Wishlist</button>
+</form>
+
 
 </body>
 </html>
+
+<script>
+    document.getElementById('add-more-items').addEventListener('click', function () {
+        let formsetContainer = document.getElementById('formset-container');
+        let totalForms = document.getElementById('id_form-TOTAL_FORMS');
+        let formNum = parseInt(totalForms.value);
+
+        let newForm = formsetContainer.children[0].cloneNode(true);
+        let formRegex = RegExp(`form-(\\d){1}-`, 'g');
+        newForm.innerHTML = newForm.innerHTML.replace(formRegex, `form-${formNum}-`);
+
+        formsetContainer.appendChild(newForm);
+
+        totalForms.value = formNum + 1;
+    });
+</script>
