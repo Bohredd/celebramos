@@ -9,8 +9,10 @@ class UsuarioCreationForm(forms.ModelForm):
 
     class Meta:
         model = Usuario
-        fields = ['nome_completo', 'email', 'cpf', 'telefone', 'data_nascimento', 'imagem']
-
+        fields = ['nome_completo', 'email', 'telefone', 'data_nascimento', 'imagem']
+        widgets = {
+            'data_nascimento': forms.DateInput(attrs={'type': 'date'}),
+        }
     def clean_password_confirm(self):
         password = self.cleaned_data.get('password')
         password_confirm = self.cleaned_data.get('password_confirm')
@@ -30,24 +32,24 @@ class UsuarioCreationForm(forms.ModelForm):
 
             ConfiguracoesUsuario.objects.create(
                 usuario=user,
-                tema=self.cleaned_data['tema'],
-                notificacoes_itens=self.cleaned_data['notificacoes_itens'],
-                notificacoes_renovacao=self.cleaned_data['notificacoes_renovacao'],
+                tema='claro',
+                notificacoes_itens=False,
+                notificacoes_renovacao=False,
             )
         return user
 
 class UsuarioForm(forms.ModelForm):
     class Meta:
         model = Usuario
-        fields = ['nome_completo', 'email', 'cpf', 'telefone', 'data_nascimento', 'imagem']
+        fields = ['nome_completo', 'email', 'telefone', 'data_nascimento', 'imagem']
         widgets = {
             'data_nascimento': forms.DateInput(attrs={'type': 'date'}),
         }
-
-class ConfiguracoesUsuarioForm(forms.ModelForm):
-    class Meta:
-        model = ConfiguracoesUsuario
-        fields = ['tema', 'notificacoes_itens', 'notificacoes_renovacao']
-        widgets = {
-            'tema': forms.RadioSelect,
-        }
+#
+# class ConfiguracoesUsuarioForm(forms.ModelForm):
+#     class Meta:
+#         model = ConfiguracoesUsuario
+#         fields = ['tema', 'notificacoes_itens', 'notificacoes_renovacao']
+#         widgets = {
+#             'tema': forms.RadioSelect,
+#         }
