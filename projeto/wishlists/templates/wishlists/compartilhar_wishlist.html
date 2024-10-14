@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Compartilhar</title>
+</head>
+<body>
+<h1>Compartilhar Wishlist: {{ wishlist.nome }}</h1>
+
+<p>Escaneie o código abaixo para acessar a wishlist como cliente:</p>
+
+<p>Acesse o link diretamente: <a href="/ver/{{ wishlist.id }}/">Clique aqui</a></p>
+
+<p>Escaneie o código abaixo para acessar a wishlist como Convidado:</p>
+
+<img src="data:image/png;base64,{{ qr_code }}" alt="QR Code da Wishlist">
+
+<p>Ou acesse o link diretamente: <a href="/ver/c/{{ wishlist.id }}/">Clique aqui</a></p>
+
+</body>
+</html>

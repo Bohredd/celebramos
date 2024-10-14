@@ -1,5 +1,9 @@
+import base64
+import io
+
+import qrcode
 from django.contrib.auth.decorators import login_required
-from django.shortcuts import render, redirect
+from django.shortcuts import render, redirect, get_object_or_404
 from django.urls import reverse
 
 from .forms import WishlistForm, ItemForm, EscolherPlanoForm
@@ -88,7 +92,38 @@ def checkout_pagamento(request, plano_id):
     plano = PlanoCredito.objects.get(id=plano_id)
     return render(request, 'wishlists/checkout_pagamento.html', {'plano': plano})
 
-def ver_wishlist(request, wishlist_id):
+def compartilhar_wishlist(request, wishlist_id):
+    wishlist = get_object_or_404(Wishlist, id=wishlist_id)
+
+    url_wishlist = request.build_absolute_uri(f'/ver/c/{wishlist_id}/')
+
+    qr = qrcode.QRCode(
+        version=1,
+        error_correction=qrcode.constants.ERROR_CORRECT_L,
+        box_size=10,
+        border=4,
+    )
+    qr.add_data(url_wishlist)
+    qr.make(fit=True)
+
+    img = qr.make_image(fill='black', back_color='white')
+    buf = io.BytesIO()
+    img.save(buf, format='PNG')
+    img.seek(0)
+
+    img_base64 = base64.b64encode(buf.getvalue()).decode('utf-8')
+
+    return render(request, 'wishlists/compartilhar_wishlist.html', {
+        'wishlist': wishlist,
+        'qr_code': img_base64,
+    })
+
+def ver_wishlist_cliente(request, wishlist_id):
+    wishlist = Wishlist.objects.get(id=wishlist_id)
+    itens = wishlist.itens.all()
+    return render(request, 'wishlists/ver_wishlist.html', {'wishlist': wishlist, 'itens': itens})
+
+def ver_wishlist_convidado(request, wishlist_id):
     wishlist = Wishlist.objects.get(id=wishlist_id)
     itens = wishlist.itens.all()
     return render(request, 'wishlists/ver_wishlist.html', {'wishlist': wishlist, 'itens': itens})
