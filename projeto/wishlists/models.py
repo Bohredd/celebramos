@@ -16,6 +16,7 @@ class Wishlist(models.Model):
     comprado_por = models.ForeignKey('usuarios.Usuario', on_delete=models.CASCADE, null=True, blank=True)
     horario_evento = models.TimeField(blank=True, null=True) #forms
     descricao_evento = models.TextField(blank=True, null=True) #forms
+    itens = models.ManyToManyField(Item, blank=True)
 
 class PlanoCredito(models.Model):
     nome = models.CharField(max_length=100)

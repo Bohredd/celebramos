@@ -5,7 +5,7 @@ from django.urls import reverse
 from .forms import WishlistForm, ItemForm, EscolherPlanoForm
 from django.forms import modelformset_factory
 from django.contrib import messages
-from .models import Item, PlanoCredito
+from .models import Item, PlanoCredito, Wishlist
 from django.utils.safestring import mark_safe
 
 from usuarios.models import Usuario
@@ -31,8 +31,10 @@ def criacao_wishlist(request):
 
             itens = formset.save(commit=False)
             for item in itens:
-                item.wishlist = wishlist
                 item.save()
+
+            wishlist.itens.set(itens)
+            wishlist.save()
 
             if wishlist.creditos_colocados > request.user.creditos:
                 wishlist.delete()
@@ -50,7 +52,7 @@ def criacao_wishlist(request):
                 request.user.creditos -= wishlist.creditos_colocados
                 request.user.save()
                 messages.success(request, 'Wishlist criada com sucesso!')
-                return redirect('wishlist_list')
+                return redirect('ver_wishlist', wishlist_id=wishlist.id)
     else:
         form = WishlistForm()
         formset = ItemFormSet(queryset=Item.objects.none())
@@ -59,7 +61,7 @@ def criacao_wishlist(request):
 
 
 def comprar_creditos(request):
-    planos = PlanoCredito.objects.all()  # Obter todos os planos
+    planos = PlanoCredito.objects.all()
 
     if request.method == 'POST':
         form = EscolherPlanoForm(request.POST)
@@ -81,3 +83,12 @@ def comprar_creditos(request):
     else:
         form = EscolherPlanoForm()
     return render(request, 'wishlists/comprar_creditos.html', {'planos': planos, 'form': form})
+
+def checkout_pagamento(request, plano_id):
+    plano = PlanoCredito.objects.get(id=plano_id)
+    return render(request, 'wishlists/checkout_pagamento.html', {'plano': plano})
+
+def ver_wishlist(request, wishlist_id):
+    wishlist = Wishlist.objects.get(id=wishlist_id)
+    itens = wishlist.itens.all()
+    return render(request, 'wishlists/ver_wishlist.html', {'wishlist': wishlist, 'itens': itens})

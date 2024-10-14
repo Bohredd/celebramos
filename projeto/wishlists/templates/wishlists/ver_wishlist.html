@@ -1,0 +1,20 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Wishlist </title>
+</head>
+<body>
+
+{% if wishlist %}
+    <h2> Wishlist {{ wishlist.nome }} </h2>
+    <p>Descrição: {{ wishlist.descricao }}</p>
+    {% for item in itens %}
+        <h3> Item: {{item.nome_item }}</h3>
+        <p>Foi comprado?: {{ item.comprado }}</p>
+
+    {% endfor %}
+
+{% endif %}
+</body>
+</html>
