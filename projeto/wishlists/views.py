@@ -13,15 +13,12 @@ from django.utils.safestring import mark_safe
 from usuarios.models import Usuario
 from decouple import config
 
-
 def pagina_inicial(request):
     quantia_wishlists = Wishlist.objects.count()
     quantia_usuarios = Usuario.objects.count()
-    quantia_creditos = Usuario.objects.aggregate(quantia_creditos=Sum('creditos'))['quantia_creditos']
 
     return render(request, 'wishlists/pagina_inicial.html',
-                  {'quantia_wishlists': quantia_wishlists, 'quantia_usuarios': quantia_usuarios,
-                   'quantia_creditos': quantia_creditos})
+                  {'quantia_wishlists': quantia_wishlists, 'quantia_usuarios': quantia_usuarios})
 
 
 @login_required
