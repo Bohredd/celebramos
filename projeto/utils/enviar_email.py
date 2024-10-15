@@ -9,7 +9,7 @@ def enviar_email(assunto, corpo, destinatario):
         corpo,
         settings.DEFAULT_FROM_EMAIL,
         [destinatario],
-        fail_silently=False,
+        fail_silently=True,
     )
 
 def enviar_email_html(assunto, corpo, destinatario, html):

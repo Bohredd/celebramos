@@ -1,0 +1,7 @@
+Olá {{ user.nome_completo }},
+
+Obrigado por se cadastrar no nosso site! Por favor, clique no link abaixo para ativar sua conta:
+
+http://{{ domain }}{% url 'ativar_conta' uidb64=uidb64 token=token %}
+
+Se você não realizou este cadastro, por favor ignore este e-mail.
