@@ -72,4 +72,4 @@ def minha_conta(request):
     else:
         form = UsuarioForm(instance=usuario)
 
-    return render(request, 'usuarios/minha_conta.html', {'form': form})
+    return render(request, 'usuarios/minha_conta.html', {'form': form, 'creditos': usuario.creditos})
