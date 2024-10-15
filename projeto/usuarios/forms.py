@@ -53,3 +53,12 @@ class UsuarioForm(forms.ModelForm):
 #         widgets = {
 #             'tema': forms.RadioSelect,
 #         }
+
+class EsqueciSenhaForm(forms.Form):
+    email = forms.EmailField(label="E-mail", max_length=254)
+
+    def clean_email(self):
+        email = self.cleaned_data.get('email')
+        if not Usuario.objects.filter(email=email).exists():
+            raise forms.ValidationError("Não encontramos um usuário com este e-mail.")
+        return email
