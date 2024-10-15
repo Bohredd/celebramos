@@ -1,10 +1,8 @@
 from django.shortcuts import render, redirect
 from django.utils.crypto import get_random_string
-
-from .forms import UsuarioCreationForm, EsqueciSenhaForm
+from .forms import UsuarioCreationForm, EsqueciSenhaForm, UsuarioForm
 from django.contrib.auth import authenticate, login
 from django.contrib import messages
-
 from .models import Usuario
 from utils.enviar_email import enviar_email
 
@@ -61,3 +59,17 @@ def esqueci_senha(request):
         form = EsqueciSenhaForm()
 
     return render(request, 'usuarios/esqueci_senha.html', {'form': form})
+
+def minha_conta(request):
+
+    usuario = Usuario.objects.get(email=request.user.email)
+
+    if request.method == 'POST':
+        form = UsuarioForm(request.POST, request.FILES, instance=usuario)
+        if form.is_valid():
+            form.save()
+            messages.success(request, 'Informações atualizadas com sucesso.')
+    else:
+        form = UsuarioForm(instance=usuario)
+
+    return render(request, 'usuarios/minha_conta.html', {'form': form})
