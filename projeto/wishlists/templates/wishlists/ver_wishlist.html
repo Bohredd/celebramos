@@ -5,16 +5,30 @@
     <title>Wishlist </title>
 </head>
 <body>
+ <h1>Wishlist: {{ wishlist.nome }}</h1>
 
-{% if wishlist %}
-    <h2> Wishlist {{ wishlist.nome }} </h2>
-    <p>Descrição: {{ wishlist.descricao }}</p>
-    {% for item in itens %}
-        <h3> Item: {{item.nome_item }}</h3>
-        <p>Foi comprado?: {{ item.comprado }}</p>
+    <form method="POST">
+        {% csrf_token %}
+        {{ formset.management_form }}
 
-    {% endfor %}
+        <table>
+            <thead>
+                <tr>
+                    <th>Nome do Item</th>
+                    <th>Link de Compra do Item</th>
+                </tr>
+            </thead>
+            <tbody>
+                {% for form in formset %}
+                    <tr>
+                        <td>{{ form.nome_item }}</td>
+                        <td>{{ form.link_compra }}</td>
+                    </tr>
+                {% endfor %}
+            </tbody>
+        </table>
 
-{% endif %}
+        <button type="submit">Salvar Alterações</button>
+    </form>
 </body>
 </html>
