@@ -1,11 +1,8 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <title>Title</title>
-</head>
-<body>
+{% extends 'wishlists/base.html' %}
 
+{% block title %}Celebramos! - Ver Wishlist{% endblock %}
+
+{% block content %}
 {% for item in itens %}
     <p>{{ item.nome_item }}</p>
     {% if item.link_compra %}
@@ -13,5 +10,4 @@
     {% endif %}
 {% endfor %}
 
-</body>
-</html>
+{% endblock %}

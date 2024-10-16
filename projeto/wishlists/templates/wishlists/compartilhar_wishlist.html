@@ -1,10 +1,8 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <title>Compartilhar</title>
-</head>
-<body>
+{% extends 'wishlists/base.html' %}
+
+{% block title %}Celebramos! - Compartilhar Wishlist{% endblock %}
+
+{% block content %}
 <h1>Compartilhar Wishlist: {{ wishlist.nome }}</h1>
 
 <p>Escaneie o código abaixo para acessar a wishlist como cliente:</p>
@@ -17,5 +15,4 @@
 
 <p>Ou acesse o link diretamente: <a href="/ver/c/{{ wishlist.id }}/">Clique aqui</a></p>
 
-</body>
-</html>
+{% endblock %}

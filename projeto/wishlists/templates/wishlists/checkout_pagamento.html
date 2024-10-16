@@ -1,11 +1,8 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <title>Checkout pagamento</title>
-</head>
-<body>
+{% extends 'wishlists/base.html' %}
 
+{% block title %}Celebramos! - Checkout Pagamento{% endblock %}
+
+{% block content %}
 {% if plano %}
 
     <h2> Plano {{plano.nome}} </h2>
@@ -15,5 +12,4 @@
 
 {% endif %}
 
-</body>
-</html>
+{% endblock %}

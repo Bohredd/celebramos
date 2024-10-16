@@ -1,11 +1,8 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <title>Title</title>
-</head>
-<body>
-<div class="container">
+{% extends 'wishlists/base.html' %}
+
+{% block title %}Celebramos! - Minha Conta{% endblock %}
+
+{% block content %}
     <h2>Minha Conta</h2>
 
     <form method="post" enctype="multipart/form-data">
@@ -53,6 +50,4 @@
 
     <p> Você tem {{ usuario.creditos }} créditos </p>
 
-</div>
-</body>
-</html>
+{% endblock %}
