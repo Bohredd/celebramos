@@ -74,6 +74,7 @@ def login_usuario(request):
 
         if user is not None:
             login(request, user)
+            messages.success(request, 'Autenticação realizada com sucesso.')
             return redirect('pagina_inicial')
         else:
             messages.error(request, 'Credenciais inválidas. Tente novamente.')
