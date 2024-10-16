@@ -13,27 +13,31 @@ from django.contrib.auth.tokens import default_token_generator
 from django.contrib.auth import get_user_model
 from django.utils.encoding import force_str
 from django.utils.http import urlsafe_base64_decode
-
+from decouple import config
 
 def cadastro_usuario(request):
     if request.method == 'POST':
         form = UsuarioCreationForm(request.POST, request.FILES)
         if form.is_valid():
             usuario = form.save(commit=False)
-            usuario.is_active = False
-            usuario.save()
 
-            current_site = get_current_site(request)
-            mail_subject = 'Ative sua conta no nosso site'
-            message = render_to_string('usuarios/confirmacao_email.html', {
-                'user': usuario,
-                'domain': current_site.domain,
-                'uidb64': urlsafe_base64_encode(force_bytes(usuario.pk)),
-                'token': default_token_generator.make_token(usuario),
-            })
+            if config("DEBUG") == 'False':
+                usuario.is_active = False
+                usuario.save()
 
-            enviar_email(mail_subject, message, usuario.email)
+                current_site = get_current_site(request)
+                mail_subject = 'Ative sua conta no nosso site'
+                message = render_to_string('usuarios/confirmacao_email.html', {
+                    'user': usuario,
+                    'domain': current_site.domain,
+                    'uidb64': urlsafe_base64_encode(force_bytes(usuario.pk)),
+                    'token': default_token_generator.make_token(usuario),
+                })
 
+                enviar_email(mail_subject, message, usuario.email)
+            else:
+                usuario.is_active = True
+                usuario.save()
             messages.success(request, 'Cadastro realizado com sucesso! Verifique seu e-mail para ativar sua conta.')
             return redirect('login_usuario')
     else:
