@@ -1,17 +1,181 @@
 {% extends 'wishlists/base.html' %}
+{% load custom_filters %}
+{% load static %}
 
 {% block title %}Celebramos! - Home{% endblock %}
 
 {% block content %}
 
-    <h1>adfadfgadfad</h1>
+{% if quantia_wishlists %}
+<h3> Até agora foram criadas {{quantia_wishlists}} wishlists </h3>
+{% endif %}
 
-    {% if quantia_wishlists %}
-        <h3> Até agora foram criadas {{quantia_wishlists}} wishlists </h3>
-    {% endif %}
+{% if quantia_usuarios %}
+<h3> Até agora foram criados {{quantia_usuarios}} usuários </h3>
+{% endif %}
 
-    {% if quantia_usuarios %}
-        <h3> Até agora foram criados {{quantia_usuarios}} usuários </h3>
-    {% endif %}
+<!-- Seção de apresentação -->
 
+<h4> O que é a Celebramos? </h4>
+
+<div class="container-fluid d-flex align-items-center">
+    <div class="text-container me-3">
+        <h1>Bem-vindo à Minha Wishlist</h1>
+        <p>Aqui você pode encontrar os itens que eu gostaria de adquirir. Explore e veja o que há de melhor!</p>
+        <a href="#" class="btn btn-primary">Fazer Minha Wishlist</a>
+    </div>
+    <img src="https://via.placeholder.com/400" alt="Imagem da Wishlist" class="img-fluid">
+</div>
+
+<!-- Seção de explicação de como fazer -->
+
+<h4> Como criar sua wishlist </h4>
+
+<div class="container mt-4">
+    <div class="row align-items-center">
+        <div class="col-md-4 text-start">
+            <h2>Como criar</h2>
+            <h2>a sua wishlist</h2>
+        </div>
+        <div class="col-md-8">
+            <div class="row row-cols-3 g-4">
+                <div class="col">
+                    <div class="card">
+                        <img src="https://via.placeholder.com/150" class="card-img-top" alt="Imagem do Card 1">
+                        <div class="card-body">
+                            <h5 class="card-title">Card 1</h5>
+                            <p class="card-text">Conteúdo do Card 1.</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="col">
+                    <div class="card">
+                        <img src="https://via.placeholder.com/150" class="card-img-top" alt="Imagem do Card 2">
+                        <div class="card-body">
+                            <h5 class="card-title">Card 2</h5>
+                            <p class="card-text">Conteúdo do Card 2.</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="col">
+                    <div class="card">
+                        <img src="https://via.placeholder.com/150" class="card-img-top" alt="Imagem do Card 3">
+                        <div class="card-body">
+                            <h5 class="card-title">Card 3</h5>
+                            <p class="card-text">Conteúdo do Card 3.</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="col">
+                    <div class="card">
+                        <img src="https://via.placeholder.com/150" class="card-img-top" alt="Imagem do Card 4">
+                        <div class="card-body">
+                            <h5 class="card-title">Card 4</h5>
+                            <p class="card-text">Conteúdo do Card 4.</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="col">
+                    <div class="card">
+                        <img src="https://via.placeholder.com/150" class="card-img-top" alt="Imagem do Card 5">
+                        <div class="card-body">
+                            <h5 class="card-title">Card 5</h5>
+                            <p class="card-text">Conteúdo do Card 5.</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="col">
+                    <div class="card">
+                        <img src="https://via.placeholder.com/150" class="card-img-top" alt="Imagem do Card 6">
+                        <div class="card-body">
+                            <h5 class="card-title">Card 6</h5>
+                            <p class="card-text">Conteúdo do Card 6.</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- Seção de tipos de créditos -->
+
+<h4> Pacotes de Créditos </h4>
+
+<div class="row justify-content-center">
+    {% for plano in planos %}
+    <div class="col-12 col-sm-2 col-md-2 mb-2">
+        <div class="card text-center">
+            <img src="{% static 'diogo.jpg' %}" class="card-img-top" height="25%" width="100%" alt="{{ plano.nome }}"/>
+            <div class="card-body">
+                <h5 class="card-title">{{ plano.nome }}</h5>
+                <p class="card-text">Vindo {{ plano.quantidade }} {% if plano.quantidade > 1 %}créditos{% else
+                    %}crédito{% endif %}.</p>
+                <p class="card-text">Por apenas R$ {{ plano.preco }}</p>
+                <p class="card-text">Podendo gerar {{ plano.quantidade }} {% if plano.quantidade > 1 %}até sites{% else
+                    %}site{% endif %}!</p>
+                <a href="#" class="btn btn-primary">Eu quero adquirir créditos!</a>
+            </div>
+        </div>
+    </div>
+    {% endfor %}
+</div>
+
+<!-- Seção de perguntas frequentes -->
+
+<h4> Perguntas Frequentes </h4>
+
+<div class="accordion" id="accordionExample">
+    <div class="accordion-item">
+        <h2 class="accordion-header">
+            <button class="accordion-button" type="button" data-bs-toggle="collapse" data-bs-target="#collapseOne"
+                    aria-expanded="true" aria-controls="collapseOne">
+                Accordion Item #1
+            </button>
+        </h2>
+        <div id="collapseOne" class="accordion-collapse collapse show" data-bs-parent="#accordionExample">
+            <div class="accordion-body">
+                <strong>This is the first item's accordion body.</strong> It is shown by default, until the collapse
+                plugin adds the appropriate classes that we use to style each element. These classes control the overall
+                appearance, as well as the showing and hiding via CSS transitions. You can modify any of this with
+                custom CSS or overriding our default variables. It's also worth noting that just about any HTML can go
+                within the <code>.accordion-body</code>, though the transition does limit overflow.
+            </div>
+        </div>
+    </div>
+    <div class="accordion-item">
+        <h2 class="accordion-header">
+            <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse"
+                    data-bs-target="#collapseTwo" aria-expanded="false" aria-controls="collapseTwo">
+                Accordion Item #2
+            </button>
+        </h2>
+        <div id="collapseTwo" class="accordion-collapse collapse" data-bs-parent="#accordionExample">
+            <div class="accordion-body">
+                <strong>This is the second item's accordion body.</strong> It is hidden by default, until the collapse
+                plugin adds the appropriate classes that we use to style each element. These classes control the overall
+                appearance, as well as the showing and hiding via CSS transitions. You can modify any of this with
+                custom CSS or overriding our default variables. It's also worth noting that just about any HTML can go
+                within the <code>.accordion-body</code>, though the transition does limit overflow.
+            </div>
+        </div>
+    </div>
+    <div class="accordion-item">
+        <h2 class="accordion-header">
+            <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse"
+                    data-bs-target="#collapseThree" aria-expanded="false" aria-controls="collapseThree">
+                Accordion Item #3
+            </button>
+        </h2>
+        <div id="collapseThree" class="accordion-collapse collapse" data-bs-parent="#accordionExample">
+            <div class="accordion-body">
+                <strong>This is the third item's accordion body.</strong> It is hidden by default, until the collapse
+                plugin adds the appropriate classes that we use to style each element. These classes control the overall
+                appearance, as well as the showing and hiding via CSS transitions. You can modify any of this with
+                custom CSS or overriding our default variables. It's also worth noting that just about any HTML can go
+                within the <code>.accordion-body</code>, though the transition does limit overflow.
+            </div>
+        </div>
+    </div>
+</div>
 {% endblock %}

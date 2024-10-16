@@ -18,8 +18,10 @@ def pagina_inicial(request):
     quantia_wishlists = Wishlist.objects.count()
     quantia_usuarios = Usuario.objects.count()
 
+    planos = PlanoCredito.objects.all()
+
     return render(request, 'wishlists/pagina_inicial.html',
-                  {'quantia_wishlists': quantia_wishlists, 'quantia_usuarios': quantia_usuarios})
+                  {'quantia_wishlists': quantia_wishlists, 'quantia_usuarios': quantia_usuarios, 'planos': planos})
 
 
 @login_e_ativo_required
