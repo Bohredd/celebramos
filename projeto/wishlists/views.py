@@ -151,3 +151,7 @@ def ver_wishlist_convidado(request, wishlist_id):
     wishlist = Wishlist.objects.get(id=wishlist_id)
     itens = wishlist.itens.all()
     return render(request, 'wishlists/ver_wishlist_convidado.html', {'wishlist': wishlist, 'itens': itens})
+
+def base_template(request):
+
+    return render(request, 'wishlists/base.html')
