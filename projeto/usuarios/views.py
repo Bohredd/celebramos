@@ -122,5 +122,5 @@ def minha_conta(request):
             messages.success(request, 'Informações atualizadas com sucesso.')
     else:
         form = UsuarioForm(instance=usuario)
-
+    print("Creditos: ", usuario.creditos)
     return render(request, 'usuarios/minha_conta.html', {'form': form, 'creditos': usuario.creditos})

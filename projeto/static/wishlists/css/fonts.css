@@ -1,0 +1,149 @@
+/* fontes */
+.pacifico-regular {
+    font-family: "Pacifico", cursive;
+    font-weight: 400;
+    font-style: normal;
+}
+
+.pacifico-small {
+    font-family: "Pacifico", cursive;
+    font-weight: 200;
+    font-style: normal;
+}
+
+.caveat-regular {
+    font-family: "Caveat", serif;
+    font-optical-sizing: auto;
+    font-weight: 600;
+    font-style: normal;
+}
+
+.caveat-small {
+    font-family: "Caveat", serif;
+    font-optical-sizing: auto;
+    font-weight: 400;
+    font-style: normal;
+}
+
+.lobster-regular {
+    font-family: "Lobster", sans-serif;
+    font-weight: 400;
+}
+
+/* css da pagina */
+body {
+    font-family: 'Caveat', cursive;
+    background-color: #fff6f0; /* Cor de fundo mais clara */
+    color: #333;
+    margin: 0;
+    padding: 0;
+}
+
+.fonte-principal {
+    color: #ff9b9a;
+}
+
+.fonte-principal-h1 {
+    color: #ff9b9a;
+    text-decoration: none;
+    text-underline: none;
+    text-shadow: 2px 2px 5px rgba(0, 0, 0, 0.3); /* Sombra para destaque */
+}
+
+.navbar {
+    background-color: #ff6f61; /* Cor da navbar */
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2); /* Sombra da navbar */
+}
+
+.navbar-brand {
+    font-family: 'Pacifico', cursive;
+    color: white !important;
+    font-size: 2rem;
+    letter-spacing: 2px; /* Aumenta o espaçamento entre letras */
+}
+
+.navbar-toggler {
+    border-color: #ff6f61;
+}
+
+.navbar-nav .nav-item .btn-outline-dark {
+    border: 2px solid #FF6F61;
+    color: #FF6F61;
+    border-radius: 25px; /* Borda arredondada para botões */
+}
+
+.navbar-nav .nav-item .btn-outline-dark:hover {
+    background-color: #ff6f61;
+    color: white;
+    transform: scale(1.05); /* Animação ao passar o mouse */
+}
+
+.alert-dismissible .btn-close {
+    color: #ff6f61;
+}
+
+footer {
+    background-color: #ff6f61; /* Cor do footer igual à da navbar */
+    color: white;
+    padding: 20px 0;
+    text-align: center;
+}
+
+footer h5 {
+    font-family: 'Pacifico', cursive;
+}
+
+footer a {
+    color: #ff6f61;
+}
+
+footer a:hover {
+    color: #ffc107;
+    text-decoration: none;
+}
+
+footer .img-fluid {
+    border-radius: 50%;
+}
+
+button {
+    transition: background-color 0.3s, color 0.3s, transform 0.3s;
+}
+
+button:hover {
+    background-color: #ff6f61;
+    color: white;
+    transform: scale(1.1); /* Animação de aumento ao passar o mouse */
+}
+
+a {
+    text-decoration: none;
+    color: #ff6f61;
+}
+
+a:hover {
+    color: #ff9b9a;
+    text-decoration: none;
+}
+
+.pacifico-regular {
+    font-family: 'Pacifico', cursive;
+    color: #ff6f61;
+}
+
+.caveat-regular {
+    font-family: 'Caveat', cursive;
+    font-weight: 700;
+}
+
+.caveat-small {
+    font-family: 'Caveat', cursive;
+    font-size: 1.1rem;
+    color: #ff9b9a;
+}
+
+@media (max-width: 768px) {
+    .navbar-brand {
+        font-size: 1.5rem;
+    }
+}

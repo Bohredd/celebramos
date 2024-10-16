@@ -142,6 +142,9 @@ AUTH_USER_MODEL = 'usuarios.Usuario'
 
 LOGIN_URL = '/usuarios/login'
 
+LOGOUT_REDIRECT_URL = '/usuarios/login/'
+
+
 # settings.py
 
 EMAIL_BACKEND = 'django.core.mail.backends.smtp.EmailBackend'
