@@ -6,14 +6,6 @@
 
 {% block content %}
 
-{% if quantia_wishlists %}
-<h3> Até agora foram criadas {{quantia_wishlists}} wishlists </h3>
-{% endif %}
-
-{% if quantia_usuarios %}
-<h3> Até agora foram criados {{quantia_usuarios}} usuários </h3>
-{% endif %}
-
 <!-- Seção de apresentação -->
 
 <h4> O que é a Celebramos? </h4>
@@ -22,7 +14,7 @@
     <div class="text-container me-3">
         <h1>Bem-vindo à Minha Wishlist</h1>
         <p>Aqui você pode encontrar os itens que eu gostaria de adquirir. Explore e veja o que há de melhor!</p>
-        <a href="#" class="btn btn-primary">Fazer Minha Wishlist</a>
+        <a href="{% url 'criacao_wishlist' %}" class="btn btn-primary">Fazer Minha Wishlist</a>
     </div>
     <img src="https://via.placeholder.com/400" alt="Imagem da Wishlist" class="img-fluid">
 </div>
@@ -40,56 +32,56 @@
         <div class="col-md-8">
             <div class="row row-cols-3 g-4">
                 <div class="col">
-                    <div class="card">
+                    <div class="card h-100">
                         <img src="https://via.placeholder.com/150" class="card-img-top" alt="Imagem do Card 1">
                         <div class="card-body">
-                            <h5 class="card-title">Card 1</h5>
-                            <p class="card-text">Conteúdo do Card 1.</p>
+                            <h5 class="card-title">1° Passo</h5>
+                            <p class="card-text">Crie sua lista de desejos.</p>
                         </div>
                     </div>
                 </div>
                 <div class="col">
-                    <div class="card">
+                    <div class="card h-100">
                         <img src="https://via.placeholder.com/150" class="card-img-top" alt="Imagem do Card 2">
                         <div class="card-body">
-                            <h5 class="card-title">Card 2</h5>
-                            <p class="card-text">Conteúdo do Card 2.</p>
+                            <h5 class="card-title">2° Passo</h5>
+                            <p class="card-text">Selecione quantos créditos aplicar.</p>
                         </div>
                     </div>
                 </div>
                 <div class="col">
-                    <div class="card">
+                    <div class="card h-100">
                         <img src="https://via.placeholder.com/150" class="card-img-top" alt="Imagem do Card 3">
                         <div class="card-body">
-                            <h5 class="card-title">Card 3</h5>
-                            <p class="card-text">Conteúdo do Card 3.</p>
+                            <h5 class="card-title">3° Passo</h5>
+                            <p class="card-text">Adicione créditos na sua conta.</p>
                         </div>
                     </div>
                 </div>
                 <div class="col">
-                    <div class="card">
+                    <div class="card h-100">
                         <img src="https://via.placeholder.com/150" class="card-img-top" alt="Imagem do Card 4">
                         <div class="card-body">
-                            <h5 class="card-title">Card 4</h5>
-                            <p class="card-text">Conteúdo do Card 4.</p>
+                            <h5 class="card-title">4° Passo</h5>
+                            <p class="card-text">Realize o pagamento dos créditos.</p>
                         </div>
                     </div>
                 </div>
                 <div class="col">
-                    <div class="card">
+                    <div class="card h-100">
                         <img src="https://via.placeholder.com/150" class="card-img-top" alt="Imagem do Card 5">
                         <div class="card-body">
-                            <h5 class="card-title">Card 5</h5>
-                            <p class="card-text">Conteúdo do Card 5.</p>
+                            <h5 class="card-title">5° Passo</h5>
+                            <p class="card-text">Adquira a lista de desejos.</p>
                         </div>
                     </div>
                 </div>
                 <div class="col">
-                    <div class="card">
+                    <div class="card h-100">
                         <img src="https://via.placeholder.com/150" class="card-img-top" alt="Imagem do Card 6">
                         <div class="card-body">
-                            <h5 class="card-title">Card 6</h5>
-                            <p class="card-text">Conteúdo do Card 6.</p>
+                            <h5 class="card-title">6° Passo</h5>
+                            <p class="card-text">Compartilhe por QRCode ou Link para seus convidados.</p>
                         </div>
                     </div>
                 </div>
@@ -97,6 +89,7 @@
         </div>
     </div>
 </div>
+
 
 <!-- Seção de tipos de créditos -->
 
@@ -106,14 +99,12 @@
     {% for plano in planos %}
     <div class="col-12 col-sm-2 col-md-2 mb-2">
         <div class="card text-center">
-            <img src="{% static 'diogo.jpg' %}" class="card-img-top" height="25%" width="100%" alt="{{ plano.nome }}"/>
+            <img src="" class="card-img-top" height="25%" width="100%" alt="{{ plano.nome }}"/>
             <div class="card-body">
                 <h5 class="card-title">{{ plano.nome }}</h5>
-                <p class="card-text">Vindo {{ plano.quantidade }} {% if plano.quantidade > 1 %}créditos{% else
-                    %}crédito{% endif %}.</p>
+                <p class="card-text">Vindo {{ plano.quantidade }} {% if plano.quantidade > 1 %}créditos{% else %}crédito{% endif %}.</p>
                 <p class="card-text">Por apenas R$ {{ plano.preco }}</p>
-                <p class="card-text">Podendo gerar {{ plano.quantidade }} {% if plano.quantidade > 1 %}até sites{% else
-                    %}site{% endif %}!</p>
+                <p class="card-text">Podendo gerar {{ plano.quantidade }} {% if plano.quantidade > 1 %}até sites{% else %}site{% endif %}!</p>
                 <a href="#" class="btn btn-primary">Eu quero adquirir créditos!</a>
             </div>
         </div>
@@ -121,6 +112,38 @@
     {% endfor %}
 </div>
 
+<!-- Seção de amostragem de dados e métricas -->
+<div class="row justify-content-center">
+
+    {% if quantia_wishlists %}
+    <div class="col-12 col-sm-2 col-md-2 mb-2">
+
+        <div class="card" style="width: 18rem;">
+            <div class="card-body">
+                <h5 class="card-title">Wishlists geradas</h5>
+                <p class="card-text">No momento, já facilitamos mais de {{ quantia_wishlists }} festas com nossas
+                    wishlists onlines!</p>
+                <p class="card-text"></p>
+                <a href="#" class="btn btn-primary">Crie a sua também!</a>
+            </div>
+        </div>
+    </div>
+    {% endif %}
+
+    {% if quantia_usuarios %}
+    <div class="col-12 col-sm-2 col-md-2 mb-2">
+
+        <div class="card" style="width: 18rem;">
+            <div class="card-body">
+                <h5 class="card-title">Usuários ativos</h5>
+                <p class="card-text">No momento, temos mais de {{quantia_usuarios}} ativos na Celebramos!, utilizando
+                    nossas facilitações!</p>
+                <a href="#" class="btn btn-primary">Seja um também!</a>
+            </div>
+        </div>
+    </div>
+    {% endif %}
+</div>
 <!-- Seção de perguntas frequentes -->
 
 <h4> Perguntas Frequentes </h4>

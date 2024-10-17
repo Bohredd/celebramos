@@ -154,6 +154,10 @@ def ver_wishlist_convidado(request, wishlist_id):
     itens = wishlist.itens.all()
     return render(request, 'wishlists/ver_wishlist_convidado.html', {'wishlist': wishlist, 'itens': itens})
 
+def minhas_wishlists(request):
+    wishlists = Wishlist.objects.filter(comprado_por=request.user)
+    return render(request, 'wishlists/minhas_wishlists.html', {'wishlists': wishlists})
+
 def base_template(request):
 
     return render(request, 'wishlists/base.html')

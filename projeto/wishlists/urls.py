@@ -1,5 +1,5 @@
 from django.urls import path
-from .views import pagina_inicial, criacao_wishlist, comprar_creditos, ver_wishlist_cliente, compartilhar_wishlist, ver_wishlist_convidado, base_template
+from .views import pagina_inicial, criacao_wishlist, comprar_creditos, ver_wishlist_cliente, compartilhar_wishlist, ver_wishlist_convidado, base_template, minhas_wishlists
 urlpatterns = [
     path('', pagina_inicial, name='pagina_inicial'),
     path('criar/', criacao_wishlist, name='criacao_wishlist'),
@@ -8,4 +8,5 @@ urlpatterns = [
     path('ver/c/<int:wishlist_id>/', ver_wishlist_convidado, name='ver_wishlist_convidado'),
     path('compartilhar/<int:wishlist_id>/', compartilhar_wishlist, name='compartilhar_wishlist'),
     path('base/', base_template, name='base_template'),
+    path('minhas/', minhas_wishlists, name='minhas_wishlists'),
 ]

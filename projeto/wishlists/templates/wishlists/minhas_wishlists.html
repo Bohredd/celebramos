@@ -1,0 +1,29 @@
+{% extends 'wishlists/base.html' %}
+{% load custom_filters %}
+{% load static %}
+
+{% block title %}Celebramos! - Minhas Wishlists{% endblock %}
+
+{% block content %}
+
+{% for wishlist in wishlists %}
+    <div class="card">
+        <div class="card-body">
+            <h5 class="card-title">
+                <a href="{% url 'ver_wishlist' wishlist.id %}">{{ wishlist.nome_evento }}</a>
+            </h5>
+            <p class="card-text">{{ wishlist.descricao_evento }}</p>
+            <p class="card-text">Criada em {{ wishlist.data_evento|date:"d/m/Y" }}</p>
+            <a href="{% url 'ver_wishlist' wishlist.id %}" class="btn btn-primary">Editar</a>
+        </div>
+    </div>
+
+{% empty %}
+
+    <div class="alert alert-info" role="alert">
+        Você ainda não possui nenhuma wishlist. <a href="{% url 'criacao_wishlist' %}" class="alert-link">Crie uma agora!</a>
+    </div>
+
+{% endfor %}
+
+{% endblock %}

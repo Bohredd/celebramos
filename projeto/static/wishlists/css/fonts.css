@@ -30,9 +30,23 @@
     font-weight: 400;
 }
 
+.great-vibes-regular {
+  font-family: "Great Vibes", cursive;
+  font-weight: 400;
+  font-style: normal;
+}
+
+.mogra-regular {
+  font-family: "Mogra", system-ui;
+  font-weight: 400;
+  font-style: normal;
+}
+
+
+
 /* css da pagina */
 body {
-    font-family: 'Caveat', cursive;
+    font-family: 'Mogra', cursive;
     background-color: #fff6f0; /* Cor de fundo mais clara */
     color: #333;
     margin: 0;
