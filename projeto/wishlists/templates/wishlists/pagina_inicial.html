@@ -45,7 +45,7 @@
                         <img src="https://via.placeholder.com/150" class="card-img-top" alt="Imagem do Card 1">
                         <div class="card-body">
                             <h5 class="card-title">1° Passo</h5>
-                            <p class="card-text">Crie sua lista de desejos.</p>
+                            <p class="card-text">Crie sua conta no site.</p>
                         </div>
                     </div>
                 </div>
@@ -54,8 +54,8 @@
                     <div class="card h-100">
                         <img src="https://via.placeholder.com/150" class="card-img-top" alt="Imagem do Card 1">
                         <div class="card-body">
-                            <h5 class="card-title">1° Passo</h5>
-                            <p class="card-text">Crie sua lista de desejos.</p>
+                            <h5 class="card-title">2° Passo</h5>
+                            <p class="card-text">Selecionar quantos créditos deseja adicionar a conta.</p>
                         </div>
                     </div>
                 </div>
@@ -64,8 +64,8 @@
                     <div class="card h-100">
                         <img src="https://via.placeholder.com/150" class="card-img-top" alt="Imagem do Card 1">
                         <div class="card-body">
-                            <h5 class="card-title">1° Passo</h5>
-                            <p class="card-text">Crie sua lista de desejos.</p>
+                            <h5 class="card-title">3° Passo</h5>
+                            <p class="card-text">Criar uma wishlist.</p>
                         </div>
                     </div>
                 </div>
@@ -74,8 +74,8 @@
                     <div class="card h-100">
                         <img src="https://via.placeholder.com/150" class="card-img-top" alt="Imagem do Card 1">
                         <div class="card-body">
-                            <h5 class="card-title">1° Passo</h5>
-                            <p class="card-text">Crie sua lista de desejos.</p>
+                            <h5 class="card-title">4° Passo</h5>
+                            <p class="card-text">Selecionar o tempo que a wishlist ficará online.</p>
                         </div>
                     </div>
                 </div>
@@ -84,8 +84,8 @@
                     <div class="card h-100">
                         <img src="https://via.placeholder.com/150" class="card-img-top" alt="Imagem do Card 1">
                         <div class="card-body">
-                            <h5 class="card-title">1° Passo</h5>
-                            <p class="card-text">Crie sua lista de desejos.</p>
+                            <h5 class="card-title">5° Passo</h5>
+                            <p class="card-text">Confirmar criação da wishlist.</p>
                         </div>
                     </div>
                 </div>
@@ -94,8 +94,8 @@
                     <div class="card h-100">
                         <img src="https://via.placeholder.com/150" class="card-img-top" alt="Imagem do Card 1">
                         <div class="card-body">
-                            <h5 class="card-title">1° Passo</h5>
-                            <p class="card-text">Crie sua lista de desejos.</p>
+                            <h5 class="card-title">6° Passo</h5>
+                            <p class="card-text">Compartilhar wishlist com seus convidados.</p>
                         </div>
                     </div>
                 </div>
@@ -118,7 +118,7 @@
                 <p class="card-text">Vindo {{ plano.quantidade }} {% if plano.quantidade > 1 %}créditos{% else %}crédito{% endif %}.</p>
                 <p class="card-text">Por apenas R$ {{ plano.preco }}</p>
                 <p class="card-text">Podendo gerar {{ plano.quantidade }} {% if plano.quantidade > 1 %}até sites{% else %}site{% endif %}!</p>
-                <a href="#" class="btn btn-primary">Eu quero adquirir créditos!</a>
+                <a href="{% url 'comprar_creditos' %}" class="btn btn-primary">Eu quero adquirir créditos!</a>
             </div>
         </div>
     </div>
@@ -127,7 +127,6 @@
 
 <!-- Seção de amostragem de dados e métricas -->
 <h4 class="mt-5 mb-3 text-center"> Clientes Satisfeitos </h4>
-
 
 <div class="row justify-content-center">
     {% if quantia_wishlists %}
@@ -171,7 +170,30 @@
             </div>
         </div>
     </div>
-    <!-- Outros itens da FAQ -->
+    <div class="accordion-item">
+        <h2 class="accordion-header">
+            <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseTwo" aria-expanded="false" aria-controls="collapseTwo">
+                Por que usar a Celebramos?
+            </button>
+        </h2>
+        <div id="collapseTwo" class="accordion-collapse collapse" data-bs-parent="#accordionExample">
+            <div class="accordion-body">
+                Celebramos! é uma plataforma online onde você pode criar e compartilhar listas de desejos de presentes para diferentes ocasiões, como aniversários, formaturas, casamentos, chás de bebê e muito mais. Seus amigos e familiares podem acessar a lista e escolher presentes que você realmente deseja.
+            </div>
+        </div>
+    </div>
+        <div class="accordion-item">
+        <h2 class="accordion-header">
+            <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseThree" aria-expanded="false" aria-controls="collapseThree">
+                Posso compartilhar minha lista com quem eu quiser?
+            </button>
+        </h2>
+        <div id="collapseThree" class="accordion-collapse collapse" data-bs-parent="#accordionExample">
+            <div class="accordion-body">
+                Celebramos! é uma plataforma online onde você pode criar e compartilhar listas de desejos de presentes para diferentes ocasiões, como aniversários, formaturas, casamentos, chás de bebê e muito mais. Seus amigos e familiares podem acessar a lista e escolher presentes que você realmente deseja.
+            </div>
+        </div>
+    </div>
 </div>
 
 {% endblock %}
